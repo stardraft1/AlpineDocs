@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alpine SMP Docs</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --sidebar: #020617;
+      --content: #020617;
+      --border: #1e293b;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    .sidebar h1 {
+      font-size: 18px;
+      margin: 0 0 16px;
+      color: var(--accent);
+    }
+
+    .nav a {
+      display: block;
+      padding: 8px 10px;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      background: #020617;
+    }
+
+    .nav .section {
+      margin-top: 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .sub {
+      margin-left: 12px;
+    }
+
+    /* Content */
+    .content {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+      background: var(--content);
+    }
+
+    .content h2 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    .content p {
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 24px;
+      background: #020617;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* Simple page switching */
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar">
+    <h1>Alpine SMP</h1>
+    <nav class="nav">
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('early')">Early Game Information</a>
+
+      <div class="section">Plugins</div>
+      <div class="sub">
+        <a href="#" onclick="showPage('plugins-overview')">Overview</a>
+        <a href="#" onclick="showPage('plugins-economy')">Economy</a>
+        <a href="#" onclick="showPage('plugins-qol')">Quality of Life</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="content">
+
+    <!-- Home -->
+    <section id="home" class="page active">
+      <h2>Welcome to Alpine SMP</h2>
+      <p>
+        Alpine SMP is a community‑focused survival multiplayer server built around
+        balanced progression, quality‑of‑life features, and long‑term gameplay.
+      </p>
+      <div class="card">
+        <p>
+          Use the sidebar to navigate through early‑game details, server mechanics,
+          and plugin documentation.
+        </p>
+      </div>
+    </section>
+
+    <!-- Early Game -->
+    <section id="early" class="page">
+      <h2>Early Game Information</h2>
+      <p>
+        This section covers launch‑phase rules, world availability, temporary
+        limitations, and early‑game events.
+      </p>
+
+      <div class="card">
+        <h3>Early Game Calendar</h3>
+        <p>Scheduled unlocks, events, and milestones.</p>
+
+        <!-- Replace the src with your public Google Calendar embed -->
+        <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"></iframe>
+      </div>
+    </section>
+
+    <!-- Plugins Overview -->
+    <section id="plugins-overview" class="page">
+      <h2>Plugins – Overview</h2>
+      <p>
+        Alpine SMP uses carefully selected plugins to enhance gameplay without
+        breaking vanilla balance.
+      </p>
+    </section>
+
+    <!-- Economy -->
+    <section id="plugins-economy" class="page">
+      <h2>Plugins – Economy</h2>
+      <p>
+        Details about money systems, shops, trading rules, and progression pacing.
+      </p>
+    </section>
+
+    <!-- QoL -->
+    <section id="plugins-qol" class="page">
+      <h2>Plugins – Quality of Life</h2>
+      <p>
+        Small improvements that make survival smoother without removing challenge.
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
