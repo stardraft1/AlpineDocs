@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alpine SMP Docs</title>
+  <title>Alpine SMP Documentation</title>
+
   <style>
     :root {
-      --bg: #0f172a;
-      --sidebar: #020617;
-      --content: #020617;
+      --bg: #0b1220;
+      --surface: #0f172a;
+      --card: #111827;
       --border: #1e293b;
       --text: #e5e7eb;
-      --muted: #94a3b8;
+      --muted: #9ca3af;
       --accent: #38bdf8;
+      --accent-2: #22d3ee;
     }
 
     * { box-sizing: border-box; }
@@ -20,174 +22,198 @@
     body {
       margin: 0;
       font-family: Inter, system-ui, Arial, sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, #0b1220 0%, #020617 100%);
       color: var(--text);
+    }
+
+    /* Top Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
       display: flex;
-      height: 100vh;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    /* Sidebar */
-    .sidebar {
-      width: 260px;
-      background: var(--sidebar);
-      border-right: 1px solid var(--border);
-      padding: 16px;
-      overflow-y: auto;
-    }
-
-    .sidebar h1 {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
       font-size: 18px;
-      margin: 0 0 16px;
-      color: var(--accent);
     }
 
-    .nav a {
-      display: block;
-      padding: 8px 10px;
-      color: var(--text);
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #020617;
+      font-weight: 800;
+    }
+
+    .nav-links a {
+      margin-left: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
       text-decoration: none;
-      border-radius: 6px;
+      color: var(--text);
       font-size: 14px;
     }
 
-    .nav a:hover {
-      background: #020617;
+    .nav-links a:hover {
+      background: rgba(56, 189, 248, 0.15);
     }
 
-    .nav .section {
-      margin-top: 12px;
-      font-size: 12px;
-      text-transform: uppercase;
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 96px 24px 72px;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
       color: var(--muted);
+      max-width: 720px;
+      line-height: 1.6;
     }
 
-    .sub {
-      margin-left: 12px;
+    .wave {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 140px;
     }
 
     /* Content */
-    .content {
-      flex: 1;
-      padding: 32px;
-      overflow-y: auto;
-      background: var(--content);
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
     }
 
-    .content h2 {
-      margin-top: 0;
-      font-size: 28px;
-    }
-
-    .content p {
-      line-height: 1.6;
-      color: var(--muted);
-      max-width: 900px;
-    }
+    .page { display: none; }
+    .page.active { display: block; }
 
     .card {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
+      border-radius: 16px;
+      padding: 24px;
       margin-top: 24px;
-      background: #020617;
     }
 
     iframe {
       width: 100%;
       height: 600px;
       border: none;
-      border-radius: 8px;
+      border-radius: 14px;
     }
 
-    /* Simple page switching */
-    .page { display: none; }
-    .page.active { display: block; }
+    h2 { margin-top: 0; }
+    p { color: var(--muted); line-height: 1.6; }
   </style>
 </head>
 <body>
 
-  <aside class="sidebar">
-    <h1>Alpine SMP</h1>
-    <nav class="nav">
+<header>
+  <div class="nav">
+    <div class="brand">
+      <!-- Replace this div with an <img src="logo.png"> once you upload your logo -->
+      <div class="logo">A</div>
+      Alpine SMP Docs
+    </div>
+
+    <div class="nav-links">
       <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('early')">Early Game Information</a>
+      <a href="#" onclick="showPage('early')">Early Game</a>
+      <a href="#" onclick="showPage('plugins')">Plugins</a>
+    </div>
+  </div>
+</header>
 
-      <div class="section">Plugins</div>
-      <div class="sub">
-        <a href="#" onclick="showPage('plugins-overview')">Overview</a>
-        <a href="#" onclick="showPage('plugins-economy')">Economy</a>
-        <a href="#" onclick="showPage('plugins-qol')">Quality of Life</a>
-      </div>
-    </nav>
-  </aside>
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Alpine SMP Documentation</h1>
+    <p>
+      Official documentation for Alpine SMP — early game information, server
+      mechanics, and plugin details in a clean GitBook-style layout.
+    </p>
+  </div>
 
-  <main class="content">
+  <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="#020617" fill-opacity="1"
+      d="M0,192L60,176C120,160,240,128,360,138.7C480,149,600,203,720,202.7C840,203,960,149,1080,122.7C1200,96,1320,96,1380,96L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
+  </svg>
+</section>
 
-    <!-- Home -->
-    <section id="home" class="page active">
-      <h2>Welcome to Alpine SMP</h2>
+<main>
+  <section id="home" class="page active">
+    <div class="card">
+      <h2>Welcome</h2>
       <p>
-        Alpine SMP is a community‑focused survival multiplayer server built around
-        balanced progression, quality‑of‑life features, and long‑term gameplay.
+        Alpine SMP is a long-term survival multiplayer server focused on balanced
+        progression, fair play, and quality-of-life improvements without losing
+        the vanilla feel.
       </p>
-      <div class="card">
-        <p>
-          Use the sidebar to navigate through early‑game details, server mechanics,
-          and plugin documentation.
-        </p>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Early Game -->
-    <section id="early" class="page">
+  <section id="early" class="page">
+    <div class="card">
       <h2>Early Game Information</h2>
       <p>
-        This section covers launch‑phase rules, world availability, temporary
-        limitations, and early‑game events.
+        Launch-phase rules, temporary restrictions, scheduled unlocks, and
+        early-game events.
       </p>
 
-      <div class="card">
-        <h3>Early Game Calendar</h3>
-        <p>Scheduled unlocks, events, and milestones.</p>
+      <h3>Early Game Calendar</h3>
+      <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"></iframe>
+    </div>
+  </section>
 
-        <!-- Replace the src with your public Google Calendar embed -->
-        <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID"></iframe>
-      </div>
-    </section>
-
-    <!-- Plugins Overview -->
-    <section id="plugins-overview" class="page">
-      <h2>Plugins – Overview</h2>
+  <section id="plugins" class="page">
+    <div class="card">
+      <h2>Plugins</h2>
       <p>
-        Alpine SMP uses carefully selected plugins to enhance gameplay without
-        breaking vanilla balance.
+        Alpine SMP uses carefully selected plugins to improve gameplay while
+        maintaining balance. Sub-sections can be added here easily.
       </p>
-    </section>
+    </div>
+  </section>
+</main>
 
-    <!-- Economy -->
-    <section id="plugins-economy" class="page">
-      <h2>Plugins – Economy</h2>
-      <p>
-        Details about money systems, shops, trading rules, and progression pacing.
-      </p>
-    </section>
-
-    <!-- QoL -->
-    <section id="plugins-qol" class="page">
-      <h2>Plugins – Quality of Life</h2>
-      <p>
-        Small improvements that make survival smoother without removing challenge.
-      </p>
-    </section>
-
-  </main>
-
-  <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
 
 </body>
 </html>
