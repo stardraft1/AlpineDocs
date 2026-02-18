@@ -21,15 +21,17 @@
     color: var(--text);
   }
 
+  /* Header */
   header {
     position: sticky;
     top: 0;
     background: #1a1a1a;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 12px 24px;
+    padding: 12px 36px;
     border-bottom: 1px solid #2a2a2a;
+    gap: 36px;
     z-index: 50;
   }
 
@@ -40,15 +42,26 @@
   }
 
   .brand img {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 6px;
-    object-fit: cover;
+    object-fit: contain;
+  }
+
+  .brand span {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  nav {
+    display: flex;
+    gap: 16px;
+    margin-left: auto;
   }
 
   nav a {
-    margin-left: 16px;
-    padding: 8px 14px;
+    padding: 10px 18px;
     text-decoration: none;
     color: var(--text);
     font-weight: 500;
@@ -67,6 +80,45 @@
     font-weight: 600;
   }
 
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 120px 24px 100px;
+    background: linear-gradient(135deg, #121212, #1a1a1a);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: url('https://i.imgur.com/4Nzr0XY.png') no-repeat bottom;
+    background-size: cover;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+
+  .hero p {
+    color: #a0a0a0;
+    max-width: 720px;
+    line-height: 1.6;
+  }
+
+  /* Main */
   main {
     max-width: 1000px;
     margin: 40px auto;
@@ -78,10 +130,11 @@
 
   .card {
     background: var(--card);
-    padding: 24px;
-    border-radius: 12px;
+    padding: 32px;
+    border-radius: 16px;
     margin-bottom: 24px;
     border: 1px solid #2a2a2a;
+    min-height: 200px;
   }
 
   h1, h2, h3 {
@@ -95,6 +148,32 @@
     margin-bottom: 12px;
   }
 
+  /* Plugins buttons */
+  .plugin-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 8px 8px 8px 0;
+    border-radius: 8px;
+    background: rgba(93, 181, 54, 0.15);
+    color: var(--text);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .plugin-btn:hover {
+    background: rgba(93, 181, 54, 0.3);
+    color: var(--accent);
+  }
+
+  .plugin-description {
+    margin-top: 8px;
+    padding: 12px;
+    background: #292929;
+    border-radius: 8px;
+    display: none;
+  }
+
   iframe {
     width: 100%;
     height: 500px;
@@ -102,7 +181,6 @@
     border: none;
     background-color: #1e1e1e;
   }
-
 </style>
 </head>
 <body>
@@ -119,6 +197,13 @@
   </nav>
 </header>
 
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Alpine SMP Documentation</h1>
+    <p>Official documentation for Alpine SMP — early game info, server mechanics, and plugin guides in a clean Alpine GitBook-style layout.</p>
+  </div>
+</section>
+
 <main>
   <section id="home" class="page active">
     <div class="card">
@@ -131,16 +216,24 @@
     <div class="card">
       <h2>Early Game Information</h2>
       <p>Launch-phase rules, temporary restrictions, scheduled unlocks, and early-game events.</p>
-
       <h3>Early Game Calendar</h3>
-      <p style="color: var(--muted);">Google Calendar embed currently disabled due to GitHub Pages restrictions. Can be added later with a public URL or third-party calendar widget.</p>
+      <p style="color: var(--muted);">Google Calendar currently disabled on GitHub Pages. Use a public embed link if you want it to show here.</p>
     </div>
   </section>
 
   <section id="plugins" class="page">
     <div class="card">
       <h2>Plugins</h2>
-      <p>Alpine SMP uses carefully selected plugins to enhance gameplay while maintaining balance. Sub-sections can be added easily.</p>
+      <p>Click a plugin to see what it does:</p>
+
+      <button class="plugin-btn" onclick="togglePlugin('plugin1')">EssentialsX</button>
+      <div id="plugin1" class="plugin-description">EssentialsX adds core commands like /home, /spawn, kits, and more.</div>
+
+      <button class="plugin-btn" onclick="togglePlugin('plugin2')">LuckPerms</button>
+      <div id="plugin2" class="plugin-description">LuckPerms manages all server permissions and roles.</div>
+
+      <button class="plugin-btn" onclick="togglePlugin('plugin3')">GriefPrevention</button>
+      <div id="plugin3" class="plugin-description">GriefPrevention handles claims and protects player builds from griefing.</div>
     </div>
   </section>
 </main>
@@ -154,6 +247,12 @@ function showPage(id, event) {
   event.currentTarget.classList.add('active');
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function togglePlugin(id) {
+  const el = document.getElementById(id);
+  if(el.style.display === 'block') el.style.display = 'none';
+  else el.style.display = 'block';
 }
 </script>
 
