@@ -8,13 +8,13 @@
   <style>
     :root {
       --bg: #0b1220;
-      --surface: #0f172a;
-      --card: #111827;
-      --border: #1e293b;
+      --surface: #111a2b;
+      --card: #1a2a3b;
+      --border: #22334b;
       --text: #e5e7eb;
-      --muted: #9ca3af;
-      --accent: #38bdf8;
-      --accent-2: #22d3ee;
+      --muted: #a0aec0;
+      --accent: #5db536;
+      --accent-2: #325f8c;
     }
 
     * { box-sizing: border-box; }
@@ -22,7 +22,7 @@
     body {
       margin: 0;
       font-family: Inter, system-ui, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1220 0%, #020617 100%);
+      background: linear-gradient(180deg, #0b1220 0%, #0a101f 100%);
       color: var(--text);
     }
 
@@ -57,7 +57,7 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      background: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -67,15 +67,23 @@
 
     .nav-links a {
       margin-left: 16px;
-      padding: 8px 14px;
-      border-radius: 999px;
+      padding: 10px 18px;
+      border-radius: 8px;
       text-decoration: none;
       color: var(--text);
       font-size: 14px;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
     }
 
     .nav-links a:hover {
-      background: rgba(56, 189, 248, 0.15);
+      border-color: var(--accent);
+      background: rgba(93, 181, 54, 0.1);
+    }
+
+    .nav-links a.active {
+      border-bottom: 3px solid var(--accent-2);
+      font-weight: 600;
     }
 
     /* Hero */
@@ -83,6 +91,8 @@
       position: relative;
       padding: 96px 24px 72px;
       overflow: hidden;
+      background: linear-gradient(135deg, #0b1220, #0a101f);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
     }
 
     .hero-inner {
@@ -91,8 +101,9 @@
     }
 
     .hero h1 {
-      font-size: 42px;
+      font-size: 48px;
       margin: 0 0 12px;
+      color: var(--accent);
     }
 
     .hero p {
@@ -101,15 +112,6 @@
       line-height: 1.6;
     }
 
-    .wave {
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
-      height: 140px;
-    }
-
-    /* Content */
     main {
       max-width: 1100px;
       margin: 0 auto;
@@ -132,6 +134,8 @@
       height: 600px;
       border: none;
       border-radius: 14px;
+      background-color: #111a2b;
+      filter: invert(0%) brightness(1);
     }
 
     h2 { margin-top: 0; }
@@ -143,13 +147,12 @@
 <header>
   <div class="nav">
     <div class="brand">
-      <!-- Replace this div with an <img src="logo.png"> once you upload your logo -->
-      <img src="logo.png" alt="Alpine SMP Logo" class="logo" />
+      <div class="logo">A</div>
       Alpine SMP Docs
     </div>
 
     <div class="nav-links">
-      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" class="active" onclick="showPage('home')">Home</a>
       <a href="#" onclick="showPage('early')">Early Game</a>
       <a href="#" onclick="showPage('plugins')">Plugins</a>
     </div>
@@ -160,15 +163,10 @@
   <div class="hero-inner">
     <h1>Alpine SMP Documentation</h1>
     <p>
-      Official documentation for Alpine SMP — early game information, server
-      mechanics, and plugin details in a clean GitBook-style layout.
+      Official documentation for Alpine SMP — early game info, server mechanics,
+      and plugin guides in a clean alpine GitBook-style layout.
     </p>
   </div>
-
-  <svg class="wave" viewBox="0 0 1440 320" preserveAspectRatio="none">
-    <path fill="#020617" fill-opacity="1"
-      d="M0,192L60,176C120,160,240,128,360,138.7C480,149,600,203,720,202.7C840,203,960,149,1080,122.7C1200,96,1320,96,1380,96L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
-  </svg>
 </section>
 
 <main>
@@ -177,7 +175,7 @@
       <h2>Welcome</h2>
       <p>
         Alpine SMP is a long-term survival multiplayer server focused on balanced
-        progression, fair play, and quality-of-life improvements without losing
+        progression, fair play, and quality-of-life improvements while maintaining
         the vanilla feel.
       </p>
     </div>
@@ -191,8 +189,8 @@
         early-game events.
       </p>
 
-      <h3>Early Game Calendar</h3>
-      <iframe src="https://calendar.google.com/calendar/embed?src=23b1ece3e6b1a3521e35850aa77ecd921f9b201208837fe30e6d5476b1540d70@group.calendar.google.com"></iframe>
+      <h3>Early Game Calendar (Dark Mode)</h3>
+      <iframe src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&mode=dark"></iframe>
     </div>
   </section>
 
@@ -200,8 +198,8 @@
     <div class="card">
       <h2>Plugins</h2>
       <p>
-        Alpine SMP uses carefully selected plugins to improve gameplay while
-        maintaining balance. Sub-sections can be added here easily.
+        Alpine SMP uses carefully selected plugins to enhance gameplay while
+        maintaining balance. Sub-sections can be added easily.
       </p>
     </div>
   </section>
@@ -211,6 +209,8 @@
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    event.target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
