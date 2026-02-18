@@ -1,173 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alpine SMP Documentation</title>
-  <style>
-    :root {
-      --bg: #0b1220;
-      --surface: #111a2b;
-      --card: #1a2a3b;
-      --border: #22334b;
-      --text: #e5e7eb;
-      --muted: #a0aec0;
-      --accent: #5db536;
-      --accent-2: #325f8c;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpine SMP Documentation</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --text: #e5e5e5;
+    --muted: #a0a0a0;
+    --accent: #5db536;
+  }
 
-    * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin:0; padding:0; }
 
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1220 0%, #0a101f 100%);
-      color: var(--text);
-    }
+  body {
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
 
-    /* Top Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(2, 6, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
+  header {
+    position: sticky;
+    top: 0;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid #2a2a2a;
+    z-index: 50;
+  }
 
-    .nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-      font-size: 18px;
-    }
+  .brand img {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
 
-    .logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
+  nav a {
+    margin-left: 16px;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
 
-    .nav-links {
-      display: flex;
-    }
+  nav a:hover {
+    background: rgba(93, 181, 54, 0.15);
+    color: var(--accent);
+  }
 
-    .nav-links a {
-      margin-right: 24px;
-      padding: 10px 16px;
-      border-left: 4px solid transparent;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
+  nav a.active {
+    background: rgba(93, 181, 54, 0.25);
+    color: var(--accent);
+    font-weight: 600;
+  }
 
-    .nav-links a.active {
-      border-left-color: var(--accent);
-      font-weight: 600;
-      color: var(--accent);
-    }
+  main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 24px;
+  }
 
-    .nav-links a:hover {
-      background: rgba(93, 181, 54, 0.1);
-      border-left-color: var(--accent-2);
-    }
+  .page { display: none; }
+  .page.active { display: block; }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      padding: 96px 24px 72px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #0b1220, #0a101f);
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    }
+  .card {
+    background: var(--card);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border: 1px solid #2a2a2a;
+  }
 
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+  h1, h2, h3 {
+    color: var(--text);
+    margin-bottom: 12px;
+  }
 
-    .hero h1 {
-      font-size: 48px;
-      margin: 0 0 12px;
-      color: var(--accent);
-    }
+  p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
 
-    .hero p {
-      color: var(--muted);
-      max-width: 720px;
-      line-height: 1.6;
-    }
+  iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    border: none;
+    background-color: #1e1e1e;
+  }
 
-    /* Main content */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 48px 24px 96px;
-    }
-
-    .page { display: none; }
-    .page.active { display: block; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-top: 24px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 14px;
-      background-color: #111a2b;
-    }
-
-    h2 { margin-top: 0; }
-    p { color: var(--muted); line-height: 1.6; }
-  </style>
+</style>
 </head>
 <body>
 
 <header>
-  <div class="nav">
-    <div class="brand">
-      <img src="logo.png" alt="Alpine SMP Logo" class="logo" />
-      Alpine SMP Docs
-    </div>
-
-    <div class="nav-links">
-      <a href="#" class="active" onclick="showPage('home', event)">Home</a>
-      <a href="#" onclick="showPage('early', event)">Early Game</a>
-      <a href="#" onclick="showPage('plugins', event)">Plugins</a>
-    </div>
+  <div class="brand">
+    <img src="logo.png" alt="Alpine SMP Logo">
+    <span>Alpine SMP Docs</span>
   </div>
+  <nav>
+    <a href="#" class="active" onclick="showPage('home', event)">Home</a>
+    <a href="#" onclick="showPage('early', event)">Early Game</a>
+    <a href="#" onclick="showPage('plugins', event)">Plugins</a>
+  </nav>
 </header>
-
-<section class="hero">
-  <div class="hero-inner">
-    <h1>Alpine SMP Documentation</h1>
-    <p>Official documentation for Alpine SMP — early game info, server mechanics, and plugin guides in a clean Alpine GitBook-style layout.</p>
-  </div>
-</section>
 
 <main>
   <section id="home" class="page active">
     <div class="card">
-      <h2>Welcome</h2>
+      <h1>Welcome</h1>
       <p>Alpine SMP is a long-term survival multiplayer server focused on balanced progression, fair play, and quality-of-life improvements while maintaining the vanilla feel.</p>
     </div>
   </section>
@@ -177,8 +132,8 @@
       <h2>Early Game Information</h2>
       <p>Launch-phase rules, temporary restrictions, scheduled unlocks, and early-game events.</p>
 
-      <h3>Early Game Calendar (Dark Mode)</h3>
-      <iframe src="<iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FVancouver&showPrint=0&src=MjNiMWVjZTNlNmIxYTM1MjFlMzU4NTBhYTc3ZWNkOTIxZjliMjAxMjA4ODM3ZmUzMGU2ZDU0NzZiMTU0MGQ3MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23616161" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>"></iframe>
+      <h3>Early Game Calendar</h3>
+      <p style="color: var(--muted);">Google Calendar embed currently disabled due to GitHub Pages restrictions. Can be added later with a public URL or third-party calendar widget.</p>
     </div>
   </section>
 
@@ -195,7 +150,7 @@ function showPage(id, event) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
   event.currentTarget.classList.add('active');
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
