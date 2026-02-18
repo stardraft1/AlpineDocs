@@ -12,6 +12,7 @@
     --text: #e5e5e5;
     --muted: #a0a0a0;
     --accent: #5db536;
+    --warning: #d9a441;
   }
 
   * { box-sizing: border-box; margin:0; padding:0; }
@@ -130,7 +131,6 @@
     border-radius: 16px;
     margin-bottom: 24px;
     border: 1px solid #2a2a2a;
-    min-height: 200px;
   }
 
   h1, h2, h3 {
@@ -146,8 +146,22 @@
 
   .rule {
     margin-bottom: 18px;
-    padding-left: 12px;
+    padding-left: 14px;
     border-left: 3px solid var(--accent);
+  }
+
+  .rule-number {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .disciplinary {
+    margin-top: 20px;
+    padding: 14px;
+    border-left: 3px solid var(--warning);
+    background: rgba(217, 164, 65, 0.08);
+    border-radius: 6px;
+    color: var(--muted);
   }
 
   .plugin-btn {
@@ -183,8 +197,8 @@
     border-top: 1px solid #2a2a2a;
     margin-top: 40px;
   }
-</style>
 
+</style>
 </head>
 <body>
 
@@ -204,11 +218,9 @@
 <section class="hero">
   <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
     <path fill="#1e1e1e" fill-opacity="0.4"
-      d="M0,192L60,181.3C120,171,240,149,360,144C480,139,600,149,720,144C840,139,960,117,1080,122.7C1200,128,1320,160,1380,176L1440,192L1440,320L0,320Z">
-    </path>
+      d="M0,192L60,181.3C120,171,240,149,360,144C480,139,600,149,720,144C840,139,960,117,1080,122.7C1200,128,1320,160,1380,176L1440,192L1440,320L0,320Z"></path>
     <path fill="#1e1e1e" fill-opacity="0.2"
-      d="M0,256L60,240C120,224,240,192,360,176C480,160,600,160,720,165.3C840,171,960,181,1080,181.3C1200,181,1320,171,1380,165.3L1440,160L1440,320L0,320Z">
-    </path>
+      d="M0,256L60,240C120,224,240,192,360,176C480,160,600,160,720,165.3C840,171,960,181,1080,181.3C1200,181,1320,171,1380,165.3L1440,160L1440,320L0,320Z"></path>
   </svg>
 
   <div class="hero-inner">
@@ -219,78 +231,77 @@
 
 <main>
 
-  <!-- HOME -->
-  <section id="home" class="page active">
+<section id="home" class="page active">
 
-    <div class="card">
-      <h1>Welcome</h1>
-      <p>This documentation outlines the rules, expectations, plugins, and systems we use. By playing on AlpineSMP you agree to everything listed below.</p>
+  <div class="card">
+    <h1>Welcome</h1>
+    <p>This documentation outlines the rules, expectations, plugins, and systems we use. By playing on AlpineSMP you agree to everything listed below.</p>
+  </div>
+
+  <div class="card">
+
+    <div class="rule">
+      <p><span class="rule-number">1.</span> No griefing bases or builds. Stealing from other players is allowed.</p>
     </div>
 
-    <div class="card">
-      <h2>Server Rules</h2>
-
-      <div class="rule">
-        <h3>1. Respect all players</h3>
-        <p>No harassment, hate speech, excessive toxicity, or personal attacks.</p>
-      </div>
-
-      <div class="rule">
-        <h3>2. No cheating or unfair advantages</h3>
-        <p>This includes X-ray, hacked clients, duping, exploiting glitches, or any unfair modifications.</p>
-      </div>
-
-      <div class="rule">
-        <h3>3. No griefing or stealing</h3>
-        <p>Do not destroy, modify, or take items from builds that are not yours without permission.</p>
-      </div>
-
-      <div class="rule">
-        <h3>4. Use common sense</h3>
-        <p>If something gives you an unfair advantage or harms the server experience, do not do it.</p>
-      </div>
-
-      <div class="rule">
-        <h3>5. Staff decisions are final</h3>
-        <p>Staff reserve the right to enforce rules and issue punishments when necessary.</p>
-      </div>
-
+    <div class="rule">
+      <p><span class="rule-number">2.</span> All players must follow new rules and respect any announced grace periods.</p>
     </div>
 
-  </section>
-
-  <!-- EARLY GAME -->
-  <section id="early" class="page">
-    <div class="card">
-      <h2>Early Game Information</h2>
-      <p>Launch-phase rules, temporary restrictions, scheduled unlocks, and early-game events.</p>
+    <div class="rule">
+      <p><span class="rule-number">3.</span> Respect all players. Harassment, hate speech, and bullying are not allowed.</p>
     </div>
-  </section>
 
-  <!-- PLUGINS -->
-  <section id="plugins" class="page">
-    <div class="card">
-
-      <h2>Plugins</h2>
-      <p>Click a plugin to see what it does:</p>
-
-      <button class="plugin-btn" onclick="togglePlugin('plugin1')">EssentialsX</button>
-      <div id="plugin1" class="plugin-description">
-        EssentialsX adds core commands like /home, /spawn, kits, and more.
-      </div>
-
-      <button class="plugin-btn" onclick="togglePlugin('plugin2')">LuckPerms</button>
-      <div id="plugin2" class="plugin-description">
-        LuckPerms manages all server permissions and roles.
-      </div>
-
-      <button class="plugin-btn" onclick="togglePlugin('plugin3')">GriefPrevention</button>
-      <div id="plugin3" class="plugin-description">
-        GriefPrevention handles claims and protects player builds from griefing.
-      </div>
-
+    <div class="rule">
+      <p><span class="rule-number">4.</span> No cheating or exploiting bugs.</p>
     </div>
-  </section>
+
+    <div class="rule">
+      <p><span class="rule-number">5.</span> Do not take advantage of Bedrock players.</p>
+    </div>
+
+    <div class="rule">
+      <p><span class="rule-number">6.</span> You may not kill players who have no armor. If a player removes their armor after engaging, they may be attacked.</p>
+    </div>
+
+    <div class="disciplinary">
+      Breaking rules may result in disciplinary action.
+    </div>
+
+  </div>
+
+</section>
+
+<section id="early" class="page">
+  <div class="card">
+    <h2>Early Game Information</h2>
+    <p>Launch-phase rules, temporary restrictions, scheduled unlocks, and early-game events.</p>
+  </div>
+</section>
+
+<section id="plugins" class="page">
+  <div class="card">
+
+    <h2>Plugins</h2>
+    <p>Click a plugin to see what it does:</p>
+
+    <button class="plugin-btn" onclick="togglePlugin('plugin1')">EssentialsX</button>
+    <div id="plugin1" class="plugin-description">
+      EssentialsX adds core commands like /home, /spawn, kits, and more.
+    </div>
+
+    <button class="plugin-btn" onclick="togglePlugin('plugin2')">LuckPerms</button>
+    <div id="plugin2" class="plugin-description">
+      LuckPerms manages permissions and roles.
+    </div>
+
+    <button class="plugin-btn" onclick="togglePlugin('plugin3')">GriefPrevention</button>
+    <div id="plugin3" class="plugin-description">
+      GriefPrevention protects builds using land claims.
+    </div>
+
+  </div>
+</section>
 
 </main>
 
