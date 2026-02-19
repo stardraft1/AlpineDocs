@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AlpineSMP Documentation</title>
 
-<!-- Montserrat Font -->
+<!-- Montserrat -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Google Material Icons -->
+<!-- Google Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
 <style>
@@ -34,21 +34,22 @@ body {
   color: var(--text);
 }
 
-/* Icons */
+/* ICONS */
 .icon {
   font-family: 'Material Symbols Outlined';
-  font-size: 26px;
+  font-size: 28px;
   vertical-align: middle;
   margin-right: 10px;
   color: var(--accent);
 }
 
-/* Header */
+/* HEADER (original restored) */
 header {
   position: sticky;
   top: 0;
   background: #1a1a1a;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   padding: 12px 36px;
   border-bottom: 1px solid #2a2a2a;
@@ -66,6 +67,7 @@ header {
   width: 48px;
   height: 48px;
   border-radius: 6px;
+  object-fit: contain;
 }
 
 .brand span {
@@ -85,20 +87,21 @@ nav a {
   color: var(--text);
   font-weight: 500;
   border-radius: 6px;
-  transition: 0.2s;
+  transition: all 0.2s ease;
 }
 
 nav a:hover {
-  background: rgba(93,181,54,0.15);
+  background: rgba(93, 181, 54, 0.15);
   color: var(--accent);
 }
 
 nav a.active {
-  background: rgba(93,181,54,0.25);
+  background: rgba(93, 181, 54, 0.25);
   color: var(--accent);
+  font-weight: 600;
 }
 
-/* Hero */
+/* HERO (your original spacing restored) */
 .hero {
   position: relative;
   padding: 160px 24px 100px;
@@ -108,14 +111,16 @@ nav a.active {
 
 .hero svg {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  bottom: -1px;
+  left: -5%;
+  width: 110%;
   height: 100%;
+  z-index: 0;
 }
 
 .hero-inner {
   max-width: 1000px;
-  margin: auto;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
 }
@@ -128,9 +133,11 @@ nav a.active {
 
 .hero p {
   color: var(--muted);
+  max-width: 720px;
+  line-height: 1.6;
 }
 
-/* Main */
+/* MAIN */
 main {
   max-width: 1000px;
   margin: 40px auto;
@@ -140,7 +147,7 @@ main {
 .page { display:none; }
 .page.active { display:block; }
 
-/* Cards */
+/* CARDS */
 .card {
   background: var(--card);
   padding: 32px;
@@ -149,11 +156,7 @@ main {
   border: 1px solid #2a2a2a;
 }
 
-h1, h2, h3 {
-  margin-bottom: 16px;
-}
-
-/* Rules */
+/* RULES */
 .rule {
   margin-bottom: 16px;
   padding-left: 14px;
@@ -174,35 +177,41 @@ h1, h2, h3 {
   color: var(--muted);
 }
 
-/* Plugins */
+/* PLUGINS */
 .plugin-btn {
+  display: inline-block;
   padding: 12px 20px;
-  margin: 6px;
+  margin: 8px 8px 8px 0;
   border-radius: 8px;
-  background: rgba(93,181,54,0.15);
-  border: none;
+  background: rgba(93, 181, 54, 0.15);
   color: var(--text);
+  font-weight: 500;
   cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
 }
 
 .plugin-btn:hover {
-  background: rgba(93,181,54,0.3);
+  background: rgba(93, 181, 54, 0.3);
   color: var(--accent);
 }
 
 .plugin-description {
-  display:none;
+  margin-top: 8px;
   padding: 12px;
   background: #292929;
   border-radius: 8px;
-  margin-top: 6px;
+  display: none;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
-  text-align:center;
-  padding:24px;
-  color:#666;
+  text-align: center;
+  padding: 24px 0;
+  color: #666;
+  font-size: 14px;
+  border-top: 1px solid #2a2a2a;
+  margin-top: 40px;
 }
 
 </style>
@@ -226,26 +235,26 @@ footer {
 
 <section class="hero">
 
-<!-- Realistic layered mountains -->
-<svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+<!-- FIXED realistic mountains (no cutoff) -->
+<svg viewBox="0 0 1600 400" preserveAspectRatio="none">
 
-<!-- Back -->
+<!-- Back layer -->
 <path
-d="M0,260 L120,200 L240,240 L360,180 L480,250 L600,190 L720,260 L840,170 L960,240 L1080,200 L1200,260 L1320,220 L1440,260 L1440,400 L0,400 Z"
+d="M-100,260 L100,180 L250,240 L400,160 L550,240 L700,170 L850,250 L1000,150 L1150,240 L1300,180 L1450,260 L1700,260 L1700,400 L-100,400 Z"
 fill="#1e1e1e"
 opacity="0.25"
 />
 
 <!-- Middle -->
 <path
-d="M0,300 L100,240 L200,290 L300,210 L400,300 L500,220 L600,310 L700,230 L800,300 L900,210 L1000,290 L1100,240 L1200,310 L1300,260 L1440,300 L1440,400 L0,400 Z"
+d="M-100,300 L80,220 L220,300 L380,200 L540,300 L700,220 L860,300 L1020,200 L1180,280 L1340,220 L1500,300 L1700,300 L1700,400 L-100,400 Z"
 fill="#1e1e1e"
 opacity="0.45"
 />
 
 <!-- Front -->
 <path
-d="M0,340 L140,270 L280,330 L420,260 L560,350 L700,280 L840,340 L980,260 L1120,330 L1260,280 L1440,340 L1440,400 L0,400 Z"
+d="M-100,340 L120,260 L300,340 L480,240 L660,340 L840,260 L1020,340 L1200,250 L1380,330 L1550,280 L1700,340 L1700,400 L-100,400 Z"
 fill="#1e1e1e"
 opacity="0.65"
 />
@@ -254,7 +263,7 @@ opacity="0.65"
 
 <div class="hero-inner">
 <h1>AlpineSMP Documentation</h1>
-<p>Official server documentation and rules.</p>
+<p>This is the official documentation for AlpineSMP, all the information you need in here.</p>
 </div>
 
 </section>
@@ -273,15 +282,15 @@ opacity="0.65"
 <h1><span class="icon">gavel</span>Server Rules</h1>
 
 <div class="rule">
-<p><span class="rule-number">1.</span> No griefing bases or builds. Stealing from other players is allowed.</p>
+<p><span class="rule-number">1.</span> No griefing bases or builds. Stealing is allowed.</p>
 </div>
 
 <div class="rule">
-<p><span class="rule-number">2.</span> All players must follow new rules and respect any announced grace periods.</p>
+<p><span class="rule-number">2.</span> Follow all new rules and grace periods.</p>
 </div>
 
 <div class="rule">
-<p><span class="rule-number">3.</span> Respect all players. Harassment, hate speech, and bullying are not allowed.</p>
+<p><span class="rule-number">3.</span> Respect all players.</p>
 </div>
 
 <div class="rule">
@@ -293,7 +302,7 @@ opacity="0.65"
 </div>
 
 <div class="rule">
-<p><span class="rule-number">6.</span> You may not kill players who have no armor. If armor is removed during combat, they may be attacked.</p>
+<p><span class="rule-number">6.</span> No killing unarmored players.</p>
 </div>
 
 <div class="disciplinary">
@@ -306,21 +315,20 @@ Breaking rules may result in disciplinary action.
 
 <section id="early" class="page">
 <div class="card">
-<h1><span class="icon">schedule</span>Early Game</h1>
-<p>Early game information and restrictions.</p>
+<h2><span class="icon">schedule</span>Early Game Information</h2>
+<p>Launch-phase rules and restrictions.</p>
 </div>
 </section>
 
 <section id="plugins" class="page">
 <div class="card">
+<h2><span class="icon">extension</span>Plugins</h2>
 
-<h1><span class="icon">extension</span>Plugins</h1>
+<button class="plugin-btn" onclick="togglePlugin('plugin1')">EssentialsX</button>
+<div id="plugin1" class="plugin-description">Core commands.</div>
 
-<button class="plugin-btn" onclick="togglePlugin('p1')">EssentialsX</button>
-<div id="p1" class="plugin-description">Core commands like /home and /spawn.</div>
-
-<button class="plugin-btn" onclick="togglePlugin('p2')">LuckPerms</button>
-<div id="p2" class="plugin-description">Permissions and rank management.</div>
+<button class="plugin-btn" onclick="togglePlugin('plugin2')">LuckPerms</button>
+<div id="plugin2" class="plugin-description">Permissions system.</div>
 
 </div>
 </section>
@@ -340,12 +348,12 @@ document.getElementById(id).classList.add('active');
 document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
 event.currentTarget.classList.add('active');
 
-window.scrollTo({top:0,behavior:'smooth'});
+window.scrollTo({ top:0, behavior:'smooth' });
 }
 
 function togglePlugin(id){
 const el=document.getElementById(id);
-el.style.display=el.style.display==="block"?"none":"block";
+el.style.display=el.style.display==='block'?'none':'block';
 }
 
 </script>
