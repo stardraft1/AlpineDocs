@@ -6,64 +6,131 @@
 
 <title>AlpineSMP Documentation</title>
 
-<!-- Montserrat Font -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- Google Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
 <style>
 
-/* Smooth scrolling */
+:root {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #e5e5e5;
+  --muted: #a0a0a0;
+  --accent: #5db536;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Montserrat', sans-serif;
-  background: #0b0b0b;
-  color: white;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  left: 0;
+/* Header */
+header {
+  position: sticky;
   top: 0;
-  width: 220px;
-  height: 100%;
-  background: #080808;
-  border-right: 1px solid #222;
-  padding-top: 20px;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  padding: 12px 36px;
+  border-bottom: 1px solid #2a2a2a;
+  gap: 36px;
+  z-index: 100;
 }
 
-.sidebar h2 {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 20px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.sidebar a {
-  display: block;
-  padding: 12px 20px;
-  color: #ccc;
+.brand img {
+  width: 42px;
+  height: 42px;
+}
+
+.brand span {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+nav {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+
+nav a {
+  padding: 10px 18px;
   text-decoration: none;
+  color: var(--text);
+  border-radius: 6px;
   transition: 0.2s;
   cursor: pointer;
 }
 
-.sidebar a:hover {
-  background: #111;
-  color: white;
+nav a:hover {
+  background: rgba(93,181,54,0.2);
+  color: var(--accent);
 }
 
-/* Content area */
-.main {
-  margin-left: 220px;
+nav a.active {
+  background: rgba(93,181,54,0.3);
+  color: var(--accent);
 }
 
-/* Pages */
+/* Hero (HOME ONLY) */
+.hero {
+  position: relative;
+  padding: 140px 24px 100px;
+  background: linear-gradient(135deg,#121212,#1a1a1a);
+  overflow: hidden;
+}
+
+.hero svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.hero-inner h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero-inner p {
+  color: var(--muted);
+}
+
+/* Main */
+main {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
 .page {
   display: none;
 }
@@ -72,132 +139,95 @@ body {
   display: block;
 }
 
-/* Hero (HOME ONLY) */
-.hero {
-  position: relative;
-  height: 260px;
-  overflow: hidden;
-}
-
-.hero svg {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-inner {
-  text-align: center;
-  padding-top: 70px;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-inner h1 {
-  font-size: 36px;
-}
-
-.hero-inner p {
-  color: #aaa;
-}
-
-/* Container */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
 /* Cards */
 .card {
-  background: #111;
-  border-radius: 14px;
+  background: var(--card);
   padding: 28px 32px;
+  border-radius: 14px;
   margin-bottom: 24px;
-  border: 1px solid #222;
+  border: 1px solid #2a2a2a;
 }
 
-/* Headers */
+/* Titles with icons */
 .card h1,
-.card h2,
-.dropdown-header {
-
+.card h2 {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 18px;
-  font-weight: 600;
 }
 
-/* Icons */
 .material-symbols-outlined {
-  color: #4da3ff;
+  color: var(--accent);
 }
 
 /* Text */
 .card p {
-  color: #ccc;
+  color: var(--muted);
   line-height: 1.6;
+  margin-bottom: 14px;
 }
 
-/* Dropdown */
-.dropdown {
-  background: #151515;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #222;
+/* Plugin dropdown */
+.plugin {
+  background: #292929;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
 }
 
-.dropdown-header {
-  padding: 15px;
+.plugin-header {
+  padding: 14px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.dropdown-content {
+.plugin-header:hover {
+  background: #333;
+}
+
+.plugin-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  padding: 0 15px;
+  padding: 0 14px;
 }
 
-.dropdown-content.open {
-  padding: 15px;
-  max-height: 300px;
+.plugin-content.open {
+  padding: 14px;
+  max-height: 200px;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #666;
 }
 
 </style>
 </head>
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar">
+<header>
 
-<h2>AlpineSMP</h2>
-
-<a onclick="showPage('home')">
-<span class="material-symbols-outlined">home</span>
- Home
-</a>
-
-<a onclick="showPage('plugins')">
-<span class="material-symbols-outlined">extension</span>
- Plugins
-</a>
-
-<a onclick="showPage('rules')">
-<span class="material-symbols-outlined">gavel</span>
- Rules
-</a>
-
+<div class="brand">
+<img src="logo.png">
+<span>AlpineSMP</span>
 </div>
 
+<nav>
+<a class="active" onclick="showPage('home', this)">Home</a>
+<a onclick="showPage('rules', this)">Rules</a>
+<a onclick="showPage('plugins', this)">Plugins</a>
+</nav>
 
-<div class="main">
+</header>
 
-<!-- HOME PAGE -->
-<div id="home" class="page active">
 
-<section class="hero">
+<!-- HERO ONLY ON HOME -->
+<div id="homeHero" class="hero">
 
 <svg viewBox="-50 0 1540 400" preserveAspectRatio="none">
 
@@ -214,33 +244,35 @@ fill="#1e1e1e" opacity="0.65"/>
 
 <div class="hero-inner">
 <h1>AlpineSMP Documentation</h1>
-<p>Official server documentation and rules</p>
+<p>Official documentation and server rules</p>
 </div>
 
-</section>
+</div>
 
-<div class="container">
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="page active">
 
 <div class="card">
+
 <h1>
 <span class="material-symbols-outlined">home</span>
 Welcome
 </h1>
 
 <p>
-Welcome to AlpineSMP. This documentation contains all important server info.
+This documentation outlines the rules, expectations, plugins, and systems we use.
 </p>
 
 </div>
 
-</div>
-</div>
+</section>
 
 
-<!-- RULES PAGE -->
-<div id="rules" class="page">
-
-<div class="container">
+<!-- RULES -->
+<section id="rules" class="page">
 
 <div class="card">
 
@@ -249,30 +281,21 @@ Welcome to AlpineSMP. This documentation contains all important server info.
 Server Rules
 </h2>
 
-<p><strong>1.</strong> No griefing bases or builds. Stealing from other players is allowed.</p>
-
-<p><strong>2.</strong> All players must follow new rules and respect any announced grace periods.</p>
-
-<p><strong>3.</strong> Respect all players. Harassment, hate speech, and bullying are not allowed.</p>
-
-<p><strong>4.</strong> No cheating or exploiting bugs.</p>
-
-<p><strong>5.</strong> Do not take advantage of Bedrock players.</p>
-
-<p><strong>6.</strong> You may not kill players who have no armor.</p>
-
-<p><strong>Breaking rules may end in disciplinary action.</strong></p>
+<p>1. No griefing bases or builds. Stealing is allowed.</p>
+<p>2. Follow all new rules and grace periods.</p>
+<p>3. Respect all players. No harassment.</p>
+<p>4. No cheating or exploiting.</p>
+<p>5. Do not take advantage of Bedrock players.</p>
+<p>6. No killing players without armor.</p>
+<p><strong>Breaking rules may result in punishment.</strong></p>
 
 </div>
 
-</div>
-</div>
+</section>
 
 
-<!-- PLUGINS PAGE -->
-<div id="plugins" class="page">
-
-<div class="container">
+<!-- PLUGINS -->
+<section id="plugins" class="page">
 
 <div class="card">
 
@@ -281,78 +304,79 @@ Server Rules
 Plugins
 </h2>
 
+<div class="plugin">
 
-<div class="dropdown">
-
-<div class="dropdown-header" onclick="toggleDropdown(this)">
-<span class="material-symbols-outlined">chevron_right</span>
-CoreProtect
+<div class="plugin-header" onclick="togglePlugin(this)">
+<span class="material-symbols-outlined">expand_more</span>
+EssentialsX
 </div>
 
-<div class="dropdown-content">
-<p>Logs all block changes for grief protection and rollback.</p>
-</div>
-
-</div>
-
-
-<div class="dropdown">
-
-<div class="dropdown-header" onclick="toggleDropdown(this)">
-<span class="material-symbols-outlined">chevron_right</span>
-Geyser
-</div>
-
-<div class="dropdown-content">
-<p>Allows Bedrock players to join the server.</p>
+<div class="plugin-content">
+Adds /home, /spawn, kits, and commands.
 </div>
 
 </div>
 
 
-<div class="dropdown">
+<div class="plugin">
 
-<div class="dropdown-header" onclick="toggleDropdown(this)">
-<span class="material-symbols-outlined">chevron_right</span>
+<div class="plugin-header" onclick="togglePlugin(this)">
+<span class="material-symbols-outlined">expand_more</span>
 LuckPerms
 </div>
 
-<div class="dropdown-content">
-<p>Handles permissions and ranks.</p>
+<div class="plugin-content">
+Manages permissions and ranks.
 </div>
 
 </div>
 
 
+<div class="plugin">
+
+<div class="plugin-header" onclick="togglePlugin(this)">
+<span class="material-symbols-outlined">expand_more</span>
+GriefPrevention
+</div>
+
+<div class="plugin-content">
+Protects builds and land claims.
 </div>
 
 </div>
-</div>
 
 </div>
+
+</section>
+
+
+</main>
+
+
+<footer>
+© 2026 AlpineSMP
+</footer>
 
 
 <script>
 
-/* Page switching */
-function showPage(pageId) {
+function showPage(id, navEl){
 
-document.querySelectorAll(".page").forEach(page => {
-page.classList.remove("active");
-});
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 
-document.getElementById(pageId).classList.add("active");
+document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
+navEl.classList.add("active");
 
-window.scrollTo({
-top: 0,
-behavior: "smooth"
-});
+/* show hero only on home */
+document.getElementById("homeHero").style.display =
+(id === "home") ? "block" : "none";
 
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
 
-/* Dropdown toggle */
-function toggleDropdown(header) {
+function togglePlugin(header){
 
 const content = header.nextElementSibling;
 
