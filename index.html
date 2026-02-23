@@ -183,6 +183,10 @@ main {
   margin-bottom: 14px;
 }
 
+.card strong {
+  color: #fff;
+}
+
 /* Agree Button */
 .btn-agree {
   display: inline-flex;
@@ -304,20 +308,20 @@ footer {
     <span class="material-symbols-outlined close-modal" onclick="closeModal()">close</span>
     <span class="material-symbols-outlined" style="font-size: 54px; margin-bottom: 15px;">sports_esports</span>
     <h2>Rules Accepted!</h2>
-    <p style="color: var(--muted); font-size: 0.95rem;">Join the AlpineSMP community below:</p>
+    <p style="color: var(--muted); font-size: 0.95rem;">Join the Alpine SMP community below:</p>
     
     <div class="ip-list">
       <div class="ip-item">
         <label>Java Server IP</label>
-        <code>alpinesmp2.sdlf.fun</code>
+        <code>alpinesmp.sdlf.fun</code>
       </div>
       <div class="ip-item">
         <label>Bedrock Server IP</label>
-        <code>ns576425.seedloaf.com</code>
+        <code>ns566750.seedloaf.com</code>
       </div>
       <div class="ip-item">
         <label>Bedrock Port</label>
-        <code>49184</code>
+        <code>49177</code>
       </div>
     </div>
   </div>
@@ -340,33 +344,36 @@ footer {
 
   <section id="home" class="page active">
     <div class="hero">
-        <h1>AlpineSMP Documentation</h1>
-        <p>Official documentation and server rules</p>
+        <h1>Alpine SMP Handbook</h1>
+        <p>Public Access Documentation</p>
     </div>
     <div class="card">
-      <h1><span class="material-symbols-outlined">home</span>Welcome</h1>
-      <p>This documentation outlines the rules, expectations, plugins, and systems we use.</p>
+      <h1><span class="material-symbols-outlined">home</span>Welcome to Alpine SMP!</h1>
+      [cite_start]<p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone[cite: 6, 43].</p>
+      [cite_start]<p>By playing on Alpine SMP, you agree to follow everything listed below[cite: 7, 44]. [cite_start]<strong>Failure to read this handbook is not an excuse for breaking rules</strong>[cite: 8, 45].</p>
     </div>
   </section>
 
   <section id="earlygame" class="page">
     <div class="card" style="margin-top: 40px;">
-      <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Info</h1>
-      <p>Welcome to the server! Here is some information to help you get started on your journey.</p>
-      <p>Use <strong>/rtp</strong> to find a place to build, and remember to claim your land!</p>
+      <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Information</h1>
+      [cite_start]<p>Please refer to the server schedule for event timings and more information on server systems[cite: 26, 46].</p>
+      [cite_start]<p><strong>Joining the Server:</strong> Simply go to the 'Servers' Tab in Minecraft to add the server[cite: 28].</p>
+      [cite_start]<p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts[cite: 32].</p>
+      [cite_start]<p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group[cite: 34].</p>
     </div>
   </section>
 
   <section id="rules" class="page">
     <div class="card" style="margin-top: 40px;">
       <h2><span class="material-symbols-outlined">gavel</span>Server Rules</h2>
-      <p>1. No griefing bases or builds. Stealing is allowed.</p>
-      <p>2. Follow all new rules and grace periods.</p>
-      <p>3. Respect all players. No harassment.</p>
-      <p>4. No cheating or exploiting.</p>
-      <p>5. Do not take advantage of Bedrock players.</p>
-      <p>6. No killing players without armor.</p>
-      <p><strong>Breaking rules may result in punishment.</strong></p>
+      <p>1. No griefing bases or builds. [cite_start]Stealing from other players is allowed[cite: 13].</p>
+      <p>2. [cite_start]All players must follow new rules and respect grace periods[cite: 14].</p>
+      <p>3. Respect all players. [cite_start]Harassment, hate speech, and bullying are not allowed[cite: 15].</p>
+      <p>4. [cite_start]No cheating or exploiting bugs[cite: 16].</p>
+      <p>5. [cite_start]Do not take advantage of Bedrock players[cite: 17].</p>
+      <p>6. You may not kill players who have no armor. [cite_start]If a player removes their armor after engaging, they may be attacked[cite: 18, 19].</p>
+      [cite_start]<p><strong>Breaking rules may end in disciplinary action[cite: 20].</strong></p>
 
       <button class="btn-agree" onclick="openModal()">
         <span class="material-symbols-outlined">verified_user</span>
@@ -377,24 +384,13 @@ footer {
 
   <section id="plugins" class="page">
     <div class="card" style="margin-top: 40px;">
-      <h2><span class="material-symbols-outlined">extension</span>Plugins</h2>
+      <h2><span class="material-symbols-outlined">extension</span>Plug-ins</h2>
+      [cite_start]<p>The server utilizes various plugins to enhance gameplay and maintain security[cite: 35].</p>
       <div class="plugin">
         <div class="plugin-header" onclick="togglePlugin(this)">
-          <span class="material-symbols-outlined">expand_more</span>EssentialsX
+          <span class="material-symbols-outlined">expand_more</span>Core Plugins
         </div>
-        <div class="plugin-content">Adds /home, /spawn, kits, and commands.</div>
-      </div>
-      <div class="plugin">
-        <div class="plugin-header" onclick="togglePlugin(this)">
-          <span class="material-symbols-outlined">expand_more</span>LuckPerms
-        </div>
-        <div class="plugin-content">Manages permissions and ranks.</div>
-      </div>
-      <div class="plugin">
-        <div class="plugin-header" onclick="togglePlugin(this)">
-          <span class="material-symbols-outlined">expand_more</span>GriefPrevention
-        </div>
-        <div class="plugin-content">Protects builds and land claims.</div>
+        <div class="plugin-content">Includes EssentialsX, LuckPerms, and GriefPrevention to manage commands, permissions, and land protection.</div>
       </div>
     </div>
   </section>
@@ -402,19 +398,15 @@ footer {
 </main>
 
 <footer>
-  © 2026 AlpineSMP
+  [cite_start]Property of AlpineSMP - Public Access Document [cite: 21, 37, 47]
 </footer>
 
 <script>
 function showPage(id, navEl){
-  // Update nav active state
   document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
   navEl.classList.add("active");
-
-  // Switch pages
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
-
   window.scrollTo({top: 0, behavior: "smooth"});
 }
 
@@ -435,7 +427,6 @@ function closeModal() {
   setTimeout(() => { modal.style.display = 'none'; }, 300);
 }
 
-// Close modal if clicking outside the box
 window.onclick = function(event) {
   const modal = document.getElementById('ipModal');
   if (event.target == modal) {
