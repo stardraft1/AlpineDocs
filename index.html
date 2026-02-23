@@ -16,6 +16,7 @@
   --text: #e5e5e5;
   --muted: #a0a0a0;
   --accent: #5db536;
+  --accent-glow: rgba(93, 181, 54, 0.4);
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -127,26 +128,36 @@ main {
 .material-symbols-outlined { color: var(--accent); }
 .card p { color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
 
-/* Agree Button */
+/* MODERN AGREE BUTTON */
 .btn-agree {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  background: var(--accent);
+  gap: 12px;
+  background: linear-gradient(135deg, var(--accent) 0%, #4a912b 100%);
   color: #000;
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-weight: 600;
-  border: none;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255,255,255,0.2);
   cursor: pointer;
   transition: var(--transition);
-  margin-top: 15px;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 0 var(--accent-glow);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-agree:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
   filter: brightness(1.1);
-  box-shadow: 0 5px 15px rgba(93, 181, 54, 0.3);
+}
+
+.btn-agree:active {
+  transform: translateY(-1px);
 }
 
 /* Modal Styling */
@@ -212,7 +223,7 @@ footer { text-align: center; padding: 40px 24px; color: #666; position: relative
     <span class="material-symbols-outlined close-modal" onclick="closeModal()">close</span>
     <span class="material-symbols-outlined" style="font-size: 54px; margin-bottom: 15px;">sports_esports</span>
     <h2>Rules Accepted!</h2>
-    <p style="color: var(--muted); font-size: 0.95rem;">Welcome to Alpine SMP!</p>
+    <p style="color: var(--muted); font-size: 0.95rem;">Welcome to the server!</p>
     <div class="ip-list">
       <div class="ip-item"><label>Java Server IP</label><code>alpinesmp.sdlf.fun</code></div>
       <div class="ip-item"><label>Bedrock Server IP</label><code>ns566750.seedloaf.com</code></div>
@@ -267,8 +278,8 @@ footer { text-align: center; padding: 40px 24px; color: #666; position: relative
       <p>6. You may not kill players who have no armor. If a player removes their armor after engaging, they may be attacked.</p>
       
       <button class="btn-agree" onclick="openModal()">
-        <span class="material-symbols-outlined">verified_user</span>
-        I have read and agree to the rules
+        <span class="material-symbols-outlined">check_circle</span>
+        I AGREE TO THE RULES
       </button>
     </div>
   </section>
