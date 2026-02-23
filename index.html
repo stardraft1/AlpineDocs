@@ -183,10 +183,6 @@ main {
   margin-bottom: 14px;
 }
 
-.card strong {
-  color: #fff;
-}
-
 /* Agree Button */
 .btn-agree {
   display: inline-flex;
@@ -240,10 +236,7 @@ main {
   top: 15px; right: 15px;
   color: var(--muted);
   cursor: pointer;
-  transition: 0.2s;
 }
-
-.close-modal:hover { color: #fff; }
 
 .ip-list { text-align: left; margin-top: 25px; }
 .ip-item { 
@@ -255,34 +248,6 @@ main {
 }
 .ip-item label { display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
 .ip-item code { font-family: monospace; font-size: 1.1rem; color: #fff; }
-
-/* Plugin dropdown */
-.plugin {
-  background: rgba(41, 41, 41, 0.6);
-  border-radius: 8px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
-.plugin-header {
-  padding: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.plugin-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 14px;
-}
-
-.plugin-content.open {
-  padding: 14px;
-  max-height: 200px;
-}
 
 footer {
   text-align: center;
@@ -336,7 +301,6 @@ footer {
     <a class="active" onclick="showPage('home', this)">Home</a>
     <a onclick="showPage('earlygame', this)">Early Game Info</a>
     <a onclick="showPage('rules', this)">Rules</a>
-    <a onclick="showPage('plugins', this)">Plugins</a>
   </nav>
 </header>
 
@@ -349,31 +313,31 @@ footer {
     </div>
     <div class="card">
       <h1><span class="material-symbols-outlined">home</span>Welcome to Alpine SMP!</h1>
-      [cite_start]<p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone[cite: 6, 43].</p>
-      [cite_start]<p>By playing on Alpine SMP, you agree to follow everything listed below[cite: 7, 44]. [cite_start]<strong>Failure to read this handbook is not an excuse for breaking rules</strong>[cite: 8, 45].</p>
+      <p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone.</p>
+      <p>By playing on Alpine SMP, you agree to follow everything listed below. <strong>Failure to read this handbook is not an excuse for breaking rules.</strong></p>
     </div>
   </section>
 
   <section id="earlygame" class="page">
     <div class="card" style="margin-top: 40px;">
       <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Information</h1>
-      [cite_start]<p>Please refer to the server schedule for event timings and more information on server systems[cite: 26, 46].</p>
-      [cite_start]<p><strong>Joining the Server:</strong> Simply go to the 'Servers' Tab in Minecraft to add the server[cite: 28].</p>
-      [cite_start]<p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts[cite: 32].</p>
-      [cite_start]<p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group[cite: 34].</p>
+      <p>Please read the Early Game Information to learn more about our schedules and more.</p>
+      <p><strong>How to Join:</strong> To join the server simply go to the 'Servers' Tab in Minecraft.</p>
+      <p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts.</p>
+      <p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group.</p>
     </div>
   </section>
 
   <section id="rules" class="page">
     <div class="card" style="margin-top: 40px;">
       <h2><span class="material-symbols-outlined">gavel</span>Server Rules</h2>
-      <p>1. No griefing bases or builds. [cite_start]Stealing from other players is allowed[cite: 13].</p>
-      <p>2. [cite_start]All players must follow new rules and respect grace periods[cite: 14].</p>
-      <p>3. Respect all players. [cite_start]Harassment, hate speech, and bullying are not allowed[cite: 15].</p>
-      <p>4. [cite_start]No cheating or exploiting bugs[cite: 16].</p>
-      <p>5. [cite_start]Do not take advantage of Bedrock players[cite: 17].</p>
-      <p>6. You may not kill players who have no armor. [cite_start]If a player removes their armor after engaging, they may be attacked[cite: 18, 19].</p>
-      [cite_start]<p><strong>Breaking rules may end in disciplinary action[cite: 20].</strong></p>
+      <p>1. No griefing bases or builds. Stealing from other players is allowed.</p>
+      <p>2. All players must follow new rules and respect grace periods.</p>
+      <p>3. Respect all players. Harassment, hate speech, and bullying are not allowed.</p>
+      <p>4. No cheating or exploiting bugs.</p>
+      <p>5. Do not take advantage of Bedrock players.</p>
+      <p>6. You may not kill players who have no armor. If a player removes their armor after engaging, they may be attacked.</p>
+      <p><strong>Breaking rules may end in disciplinary action.</strong></p>
 
       <button class="btn-agree" onclick="openModal()">
         <span class="material-symbols-outlined">verified_user</span>
@@ -382,23 +346,10 @@ footer {
     </div>
   </section>
 
-  <section id="plugins" class="page">
-    <div class="card" style="margin-top: 40px;">
-      <h2><span class="material-symbols-outlined">extension</span>Plug-ins</h2>
-      [cite_start]<p>The server utilizes various plugins to enhance gameplay and maintain security[cite: 35].</p>
-      <div class="plugin">
-        <div class="plugin-header" onclick="togglePlugin(this)">
-          <span class="material-symbols-outlined">expand_more</span>Core Plugins
-        </div>
-        <div class="plugin-content">Includes EssentialsX, LuckPerms, and GriefPrevention to manage commands, permissions, and land protection.</div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
-  [cite_start]Property of AlpineSMP - Public Access Document [cite: 21, 37, 47]
+  Property of AlpineSMP - Public Access Document
 </footer>
 
 <script>
@@ -408,11 +359,6 @@ function showPage(id, navEl){
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   window.scrollTo({top: 0, behavior: "smooth"});
-}
-
-function togglePlugin(header){
-  const content = header.nextElementSibling;
-  content.classList.toggle("open");
 }
 
 function openModal() {
