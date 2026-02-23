@@ -120,7 +120,6 @@ main {
   border-radius: 14px;
   margin-bottom: 24px;
   border: 1px solid #2a2a2a;
-  transition: transform 0.3s ease;
 }
 
 .card h1, .card h2 {
@@ -133,6 +132,46 @@ main {
 .material-symbols-outlined { color: var(--accent); }
 
 .card p { color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+
+/* Rules Agreement Area */
+.agreement-area {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.checkbox-container input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+#ipBox {
+  margin-top: 20px;
+  background: rgba(93, 181, 54, 0.1);
+  border: 1px dashed var(--accent);
+  padding: 15px;
+  border-radius: 8px;
+  display: none;
+  animation: fadeInUp 0.4s ease;
+}
+
+.ip-text {
+  font-family: monospace;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
 
 /* Plugin Toggles */
 .plugin {
@@ -218,6 +257,18 @@ footer { text-align: center; padding: 24px; color: #666; }
       <p>5. Do not take advantage of Bedrock players.</p>
       <p>6. No killing players without armor.</p>
       <p><strong>Breaking rules may result in punishment.</strong></p>
+
+      <div class="agreement-area">
+        <label class="checkbox-container">
+          <input type="checkbox" id="agreeCheck" onchange="toggleIP()">
+          I have read and agree to the rules
+        </label>
+        
+        <div id="ipBox">
+          <p style="margin-bottom: 5px; color: var(--text);"><strong>Server IP:</strong></p>
+          <p class="ip-text">Java: alpinesmp2.sdlf.fun</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -271,6 +322,12 @@ function showPage(id, navEl){
 function togglePlugin(header){
   const content = header.nextElementSibling;
   content.classList.toggle("open");
+}
+
+function toggleIP() {
+  const checkbox = document.getElementById('agreeCheck');
+  const ipBox = document.getElementById('ipBox');
+  ipBox.style.display = checkbox.checked ? 'block' : 'none';
 }
 </script>
 
