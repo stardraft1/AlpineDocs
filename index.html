@@ -3,23 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AlpineSMP Documentation</title>
 
-<!-- Montserrat -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-<!-- Google Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
 <style>
-
 :root {
   --bg: #121212;
   --card: #1e1e1e;
   --text: #e5e5e5;
   --muted: #a0a0a0;
   --accent: #5db536;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -36,18 +32,19 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 /* Header */
 header {
   position: sticky;
   top: 0;
-  background: #1a1a1a;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   padding: 12px 36px;
   border-bottom: 1px solid #2a2a2a;
-  gap: 36px;
   z-index: 100;
 }
 
@@ -70,7 +67,7 @@ header {
 nav {
   margin-left: auto;
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
 
 nav a {
@@ -78,34 +75,29 @@ nav a {
   text-decoration: none;
   color: var(--text);
   border-radius: 6px;
-  transition: 0.2s;
+  transition: var(--transition);
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 nav a:hover {
-  background: rgba(93,181,54,0.2);
+  background: rgba(93, 181, 54, 0.1);
   color: var(--accent);
 }
 
 nav a.active {
-  background: rgba(93,181,54,0.3);
+  background: rgba(93, 181, 54, 0.2);
   color: var(--accent);
+  box-shadow: 0 0 15px rgba(93, 181, 54, 0.1);
 }
 
-/* Hero (HOME ONLY) */
+/* Hero Section (Home Only) */
 .hero {
   position: relative;
   padding: 140px 24px 100px;
-  background: linear-gradient(135deg,#121212,#1a1a1a);
+  background: linear-gradient(135deg, #121212, #1a1a1a);
   overflow: hidden;
-}
-
-.hero svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .hero-inner {
@@ -113,15 +105,33 @@ nav a.active {
   z-index: 2;
   max-width: 1000px;
   margin: auto;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-inner h1 {
-  font-size: 42px;
+  font-size: 48px;
   margin-bottom: 10px;
+  letter-spacing: -1px;
 }
 
-.hero-inner p {
-  color: var(--muted);
+/* Page Transitions */
+.page {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Main */
@@ -131,259 +141,199 @@ main {
   padding: 0 24px;
 }
 
-.page {
-  display: none;
-}
-
-.page.active {
-  display: block;
-}
-
 /* Cards */
 .card {
   background: var(--card);
-  padding: 28px 32px;
-  border-radius: 14px;
+  padding: 32px;
+  border-radius: 16px;
   margin-bottom: 24px;
   border: 1px solid #2a2a2a;
+  transition: transform 0.3s ease;
 }
 
-/* Titles with icons */
-.card h1,
-.card h2 {
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h1, .card h2 {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-.material-symbols-outlined {
-  color: var(--accent);
-}
-
-/* Text */
 .card p {
   color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 14px;
+  line-height: 1.7;
+  margin-bottom: 16px;
 }
 
-/* Plugin dropdown */
+/* Plugin Dropdown Improvements */
 .plugin {
-  background: #292929;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  background: #252525;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #333;
   overflow: hidden;
+  transition: var(--transition);
 }
 
 .plugin-header {
-  padding: 14px;
+  padding: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  font-weight: 600;
 }
 
-.plugin-header:hover {
-  background: #333;
+.plugin-header .material-symbols-outlined {
+  transition: transform 0.3s ease;
+}
+
+.plugin.open .material-symbols-outlined {
+  transform: rotate(180deg);
 }
 
 .plugin-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 14px;
+  transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+  padding: 0 16px;
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
-.plugin-content.open {
-  padding: 14px;
-  max-height: 200px;
+.plugin.open .plugin-content {
+  max-height: 500px;
+  padding: 0 16px 16px 16px;
+  transition: max-height 0.4s ease-in-out;
 }
 
 footer {
   text-align: center;
-  padding: 24px;
-  color: #666;
+  padding: 40px 24px;
+  color: #555;
+  font-size: 0.85rem;
 }
+
+/* Hidden Utility */
+.hidden { display: none !important; }
 
 </style>
 </head>
 <body>
 
 <header>
+  <div class="brand">
+    <img src="logo.png" alt="Logo">
+    <span>AlpineSMP</span>
+  </div>
 
-<div class="brand">
-<img src="logo.png">
-<span>AlpineSMP</span>
-</div>
-
-<nav>
-<a class="active" onclick="showPage('home', this)">Home</a>
-<a onclick="showPage('rules', this)">Rules</a>
-<a onclick="showPage('plugins', this)">Plugins</a>
-</nav>
-
+  <nav id="mainNav">
+    <a class="active" onclick="showPage('home', this)">Home</a>
+    <a onclick="showPage('earlygame', this)">Early Game</a>
+    <a onclick="showPage('rules', this)">Rules</a>
+    <a onclick="showPage('plugins', this)">Plugins</a>
+  </nav>
 </header>
 
-
-<!-- HERO ONLY ON HOME -->
 <div id="homeHero" class="hero">
-
-<svg viewBox="-50 0 1540 400" preserveAspectRatio="none">
-
-<path d="M-50,260 L100,200 L240,240 L360,180 L480,250 L600,190 L720,260 L840,170 L960,240 L1080,200 L1200,260 L1320,220 L1490,260 L1490,400 L-50,400 Z"
-fill="#1e1e1e" opacity="0.25"/>
-
-<path d="M-50,300 L100,240 L200,290 L300,210 L400,300 L500,220 L600,310 L700,230 L800,300 L900,210 L1000,290 L1100,240 L1200,310 L1300,260 L1490,300 L1490,400 L-50,400 Z"
-fill="#1e1e1e" opacity="0.45"/>
-
-<path d="M-50,340 L140,270 L280,330 L420,260 L560,350 L700,280 L840,340 L980,260 L1120,330 L1260,280 L1490,340 L1490,400 L-50,400 Z"
-fill="#1e1e1e" opacity="0.65"/>
-
-</svg>
-
-<div class="hero-inner">
-<h1>AlpineSMP Documentation</h1>
-<p>Official documentation and server rules</p>
+  <div class="hero-inner">
+    <h1>AlpineSMP Documentation</h1>
+    <p>Official player guides and server regulations.</p>
+  </div>
 </div>
-
-</div>
-
 
 <main>
+  <section id="home" class="page active">
+    <div class="card">
+      <h1><span class="material-symbols-outlined">home</span>Welcome</h1>
+      <p>Welcome to the official AlpineSMP docs. Use the navigation bar to find information on rules, starting your journey, and server features.</p>
+    </div>
+  </section>
 
-<!-- HOME -->
-<section id="home" class="page active">
+  <section id="earlygame" class="page">
+    <div class="card">
+      <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Info</h1>
+      <p>Starting out on AlpineSMP is straightforward but exciting. Here’s what you need to know:</p>
+      <p>• Use <strong>/spawn</strong> to return to the hub at any time.</p>
+      <p>• Find a spot at least 500 blocks away from spawn to start your base.</p>
+      <p>• Use <strong>/rtp</strong> to teleport to a random location in the wilderness.</p>
+      <p>• Claim your land early using the golden shovel to prevent griefing.</p>
+    </div>
+  </section>
 
-<div class="card">
+  <section id="rules" class="page">
+    <div class="card">
+      <h2><span class="material-symbols-outlined">gavel</span>Server Rules</h2>
+      <p>1. No griefing bases or builds. Stealing is allowed.</p>
+      <p>2. Follow all new rules and grace periods.</p>
+      <p>3. Respect all players. No harassment.</p>
+      <p>4. No cheating or exploiting.</p>
+      <p>5. Do not take advantage of Bedrock players.</p>
+      <p>6. No killing players without armor.</p>
+    </div>
+  </section>
 
-<h1>
-<span class="material-symbols-outlined">home</span>
-Welcome
-</h1>
+  <section id="plugins" class="page">
+    <div class="card">
+      <h2><span class="material-symbols-outlined">extension</span>Plugins</h2>
+      
+      <div class="plugin">
+        <div class="plugin-header" onclick="togglePlugin(this)">
+          <span class="material-symbols-outlined">expand_more</span> EssentialsX
+        </div>
+        <div class="plugin-content">
+          Provides core commands like /home, /tpa, and /spawn to make navigation easier.
+        </div>
+      </div>
 
-<p>
-This documentation outlines the rules, expectations, plugins, and systems we use.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- RULES -->
-<section id="rules" class="page">
-
-<div class="card">
-
-<h2>
-<span class="material-symbols-outlined">gavel</span>
-Server Rules
-</h2>
-
-<p>1. No griefing bases or builds. Stealing is allowed.</p>
-<p>2. Follow all new rules and grace periods.</p>
-<p>3. Respect all players. No harassment.</p>
-<p>4. No cheating or exploiting.</p>
-<p>5. Do not take advantage of Bedrock players.</p>
-<p>6. No killing players without armor.</p>
-<p><strong>Breaking rules may result in punishment.</strong></p>
-
-</div>
-
-</section>
-
-
-<!-- PLUGINS -->
-<section id="plugins" class="page">
-
-<div class="card">
-
-<h2>
-<span class="material-symbols-outlined">extension</span>
-Plugins
-</h2>
-
-<div class="plugin">
-
-<div class="plugin-header" onclick="togglePlugin(this)">
-<span class="material-symbols-outlined">expand_more</span>
-EssentialsX
-</div>
-
-<div class="plugin-content">
-Adds /home, /spawn, kits, and commands.
-</div>
-
-</div>
-
-
-<div class="plugin">
-
-<div class="plugin-header" onclick="togglePlugin(this)">
-<span class="material-symbols-outlined">expand_more</span>
-LuckPerms
-</div>
-
-<div class="plugin-content">
-Manages permissions and ranks.
-</div>
-
-</div>
-
-
-<div class="plugin">
-
-<div class="plugin-header" onclick="togglePlugin(this)">
-<span class="material-symbols-outlined">expand_more</span>
-GriefPrevention
-</div>
-
-<div class="plugin-content">
-Protects builds and land claims.
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
+      <div class="plugin">
+        <div class="plugin-header" onclick="togglePlugin(this)">
+          <span class="material-symbols-outlined">expand_more</span> GriefPrevention
+        </div>
+        <div class="plugin-content">
+          Allows you to claim land using a golden shovel. Your chests and builds are protected within these claims.
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-
 <footer>
-© 2026 AlpineSMP
+  © 2026 AlpineSMP • Play Fair, Have Fun.
 </footer>
 
-
 <script>
+function showPage(id, navEl) {
+  // Update Navigation
+  document.querySelectorAll("nav a").forEach(a => a.classList.remove("active"));
+  navEl.classList.add("active");
 
-function showPage(id, navEl){
+  // Handle Hero Visibility
+  const hero = document.getElementById("homeHero");
+  if (id === 'home') {
+    hero.classList.remove("hidden");
+  } else {
+    hero.classList.add("hidden");
+  }
 
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
+  // Handle Page Content with smooth fade
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.remove("active");
+  });
 
-document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
-navEl.classList.add("active");
+  const targetPage = document.getElementById(id);
+  targetPage.classList.add("active");
 
-/* show hero only on home */
-document.getElementById("homeHero").style.display =
-(id === "home") ? "block" : "none";
-
-window.scrollTo({top:0,behavior:"smooth"});
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-
-function togglePlugin(header){
-
-const content = header.nextElementSibling;
-
-content.classList.toggle("open");
-
+function togglePlugin(header) {
+  const pluginDiv = header.parentElement;
+  pluginDiv.classList.toggle("open");
 }
-
 </script>
 
 </body>
