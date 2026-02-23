@@ -19,15 +19,8 @@
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -69,28 +62,11 @@ header {
   z-index: 1000;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { width: 42px; height: 42px; }
+.brand span { font-weight: 600; font-size: 20px; }
 
-.brand img {
-  width: 42px;
-  height: 42px;
-}
-
-.brand span {
-  font-weight: 600;
-  font-size: 20px;
-}
-
-nav {
-  margin-left: auto;
-  display: flex;
-  gap: 8px;
-}
-
+nav { margin-left: auto; display: flex; gap: 8px; }
 nav a {
   padding: 10px 18px;
   text-decoration: none;
@@ -100,16 +76,8 @@ nav a {
   cursor: pointer;
   font-size: 0.9rem;
 }
-
-nav a:hover {
-  background: rgba(93, 181, 54, 0.1);
-  color: var(--accent);
-}
-
-nav a.active {
-  background: rgba(93, 181, 54, 0.2);
-  color: var(--accent);
-}
+nav a:hover { background: rgba(93, 181, 54, 0.1); color: var(--accent); }
+nav a.active { background: rgba(93, 181, 54, 0.2); color: var(--accent); }
 
 /* Home Hero Section */
 .hero {
@@ -125,11 +93,7 @@ nav a.active {
   text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
-.hero p {
-  color: var(--muted);
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-}
+.hero p { color: var(--muted); font-size: 1.1rem; letter-spacing: 1px; }
 
 /* Main Content */
 main {
@@ -140,15 +104,8 @@ main {
   z-index: 20;
 }
 
-.page {
-  display: none;
-  opacity: 0;
-}
-
-.page.active {
-  display: block;
-  animation: fadeInUp 0.5s forwards;
-}
+.page { display: none; opacity: 0; }
+.page.active { display: block; animation: fadeInUp 0.5s forwards; }
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -166,22 +123,9 @@ main {
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
-.card h1, .card h2 {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.material-symbols-outlined {
-  color: var(--accent);
-}
-
-.card p {
-  color: var(--muted);
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
+.card h1, .card h2 { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.material-symbols-outlined { color: var(--accent); }
+.card p { color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
 
 /* Agree Button */
 .btn-agree {
@@ -231,12 +175,7 @@ main {
   box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
-.close-modal {
-  position: absolute;
-  top: 15px; right: 15px;
-  color: var(--muted);
-  cursor: pointer;
-}
+.close-modal { position: absolute; top: 15px; right: 15px; color: var(--muted); cursor: pointer; }
 
 .ip-list { text-align: left; margin-top: 25px; }
 .ip-item { 
@@ -249,13 +188,13 @@ main {
 .ip-item label { display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
 .ip-item code { font-family: monospace; font-size: 1.1rem; color: #fff; }
 
-footer {
-  text-align: center;
-  padding: 40px 24px;
-  color: #666;
-  position: relative;
-  z-index: 10;
-}
+/* Plugin dropdown */
+.plugin { background: rgba(41, 41, 41, 0.6); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+.plugin-header { padding: 14px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.plugin-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 14px; }
+.plugin-content.open { padding: 14px; max-height: 200px; }
+
+footer { text-align: center; padding: 40px 24px; color: #666; position: relative; z-index: 10; }
 </style>
 </head>
 <body>
@@ -273,21 +212,11 @@ footer {
     <span class="material-symbols-outlined close-modal" onclick="closeModal()">close</span>
     <span class="material-symbols-outlined" style="font-size: 54px; margin-bottom: 15px;">sports_esports</span>
     <h2>Rules Accepted!</h2>
-    <p style="color: var(--muted); font-size: 0.95rem;">Join the community using the info below:</p>
-    
+    <p style="color: var(--muted); font-size: 0.95rem;">Welcome to Alpine SMP!</p>
     <div class="ip-list">
-      <div class="ip-item">
-        <label>Java Server IP</label>
-        <code>alpinesmp.sdlf.fun</code>
-      </div>
-      <div class="ip-item">
-        <label>Bedrock Server IP</label>
-        <code>ns566750.seedloaf.com</code>
-      </div>
-      <div class="ip-item">
-        <label>Bedrock Port</label>
-        <code>49177</code>
-      </div>
+      <div class="ip-item"><label>Java Server IP</label><code>alpinesmp.sdlf.fun</code></div>
+      <div class="ip-item"><label>Bedrock Server IP</label><code>ns566750.seedloaf.com</code></div>
+      <div class="ip-item"><label>Bedrock Port</label><code>49177</code></div>
     </div>
   </div>
 </div>
@@ -301,44 +230,42 @@ footer {
     <a class="active" onclick="showPage('home', this)">Home</a>
     <a onclick="showPage('earlygame', this)">Early Game Info</a>
     <a onclick="showPage('rules', this)">Rules</a>
+    <a onclick="showPage('plugins', this)">Plugins</a>
   </nav>
 </header>
 
 <main>
-
   <section id="home" class="page active">
     <div class="hero">
         <h1>Alpine SMP Handbook</h1>
-        <p>Public Access Documentation</p>
+        <p>Official Server Documentation</p>
     </div>
     <div class="card">
-      <h1><span class="material-symbols-outlined">home</span>Welcome to Alpine SMP!</h1>
-      [cite_start]<p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone[cite: 6, 43].</p>
-      [cite_start]<p>By playing on Alpine SMP, you agree to follow everything listed below[cite: 7, 44]. [cite_start]<strong>Failure to read this handbook is not an excuse for breaking rules[cite: 8, 45].</strong></p>
+      <h1><span class="material-symbols-outlined">home</span>Welcome</h1>
+      <p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone.</p>
+      <p>By playing on Alpine SMP, you agree to follow everything listed below. <strong>Failure to read this handbook is not an excuse for breaking rules.</strong></p>
     </div>
   </section>
 
   <section id="earlygame" class="page">
     <div class="card" style="margin-top: 40px;">
       <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Information</h1>
-      [cite_start]<p>Please read the Early Game Information tab to learn more about our schedules and more[cite: 25, 26].</p>
-      [cite_start]<p><strong>How to Join:</strong> To join the server simply go to the 'Servers' Tab in Minecraft[cite: 27, 28].</p>
-      [cite_start]<p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts[cite: 32].</p>
-      [cite_start]<p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group[cite: 33, 34].</p>
+      <p><strong>How to Join:</strong> Go to the 'Servers' Tab in Minecraft to add the server using the IPs found in the Rules tab.</p>
+      <p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts.</p>
+      <p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group.</p>
     </div>
   </section>
 
   <section id="rules" class="page">
     <div class="card" style="margin-top: 40px;">
       <h2><span class="material-symbols-outlined">gavel</span>Server Rules</h2>
-      <p>1. No griefing bases or builds. [cite_start]Stealing from other players is allowed[cite: 12, 13].</p>
-      <p>2. [cite_start]All players must follow new rules and respect grace periods[cite: 14].</p>
-      <p>3. Respect all players. [cite_start]Harassment, hate speech, and bullying are not allowed[cite: 15].</p>
-      <p>4. [cite_start]No cheating or exploiting bugs[cite: 16].</p>
-      <p>5. [cite_start]Do not take advantage of Bedrock players[cite: 17].</p>
-      <p>6. [cite_start]You may not kill players who have no armor[cite: 18]. [cite_start]If a player removes their armor after engaging, they may be attacked[cite: 19].</p>
-      [cite_start]<p><strong>Breaking rules may end in disciplinary action[cite: 20].</strong></p>
-
+      <p>1. No griefing bases or builds. Stealing from other players is allowed.</p>
+      <p>2. All players must follow new rules and respect grace periods.</p>
+      <p>3. Respect all players. Harassment, hate speech, and bullying are not allowed.</p>
+      <p>4. No cheating or exploiting bugs.</p>
+      <p>5. Do not take advantage of Bedrock players.</p>
+      <p>6. You may not kill players who have no armor. If a player removes their armor after engaging, they may be attacked.</p>
+      
       <button class="btn-agree" onclick="openModal()">
         <span class="material-symbols-outlined">verified_user</span>
         I have read and agree to the rules
@@ -346,11 +273,26 @@ footer {
     </div>
   </section>
 
+  <section id="plugins" class="page">
+    <div class="card" style="margin-top: 40px;">
+      <h2><span class="material-symbols-outlined">extension</span>Plugins</h2>
+      <div class="plugin">
+        <div class="plugin-header" onclick="togglePlugin(this)"><span class="material-symbols-outlined">expand_more</span>EssentialsX</div>
+        <div class="plugin-content">Adds essential commands like /home, /spawn, and kits.</div>
+      </div>
+      <div class="plugin">
+        <div class="plugin-header" onclick="togglePlugin(this)"><span class="material-symbols-outlined">expand_more</span>LuckPerms</div>
+        <div class="plugin-content">The advanced permissions system for ranks.</div>
+      </div>
+      <div class="plugin">
+        <div class="plugin-header" onclick="togglePlugin(this)"><span class="material-symbols-outlined">expand_more</span>GriefPrevention</div>
+        <div class="plugin-content">Allows you to claim land to protect your builds.</div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  © 2026 AlpineSMP
-</footer>
+<footer>© 2026 AlpineSMP</footer>
 
 <script>
 function showPage(id, navEl){
@@ -359,6 +301,10 @@ function showPage(id, navEl){
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function togglePlugin(header){
+  header.nextElementSibling.classList.toggle("open");
 }
 
 function openModal() {
@@ -375,9 +321,7 @@ function closeModal() {
 
 window.onclick = function(event) {
   const modal = document.getElementById('ipModal');
-  if (event.target == modal) {
-    closeModal();
-  }
+  if (event.target == modal) closeModal();
 }
 </script>
 
