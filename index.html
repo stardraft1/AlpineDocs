@@ -11,7 +11,7 @@
 <style>
 :root {
   --bg: #0f0f0f;
-  --card: #1a1a1a;
+  --card: rgba(26, 26, 26, 0.9); /* Slightly transparent to see mountains behind */
   --text: #e5e5e5;
   --muted: #a0a0a0;
   --accent: #5db536;
@@ -27,6 +27,25 @@ body {
   color: var(--text);
   overflow-x: hidden;
   background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0f0f0f 100%);
+  min-height: 100vh;
+}
+
+/* Fixed Mountain Background */
+.fixed-mountains {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  z-index: -1; /* Behind everything */
+  pointer-events: none;
+}
+
+.mountains-svg {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
 }
 
 header {
@@ -58,49 +77,20 @@ nav a {
 nav a:hover { background: rgba(93, 181, 54, 0.1); color: var(--accent); }
 nav a.active { background: rgba(93, 181, 54, 0.2); color: var(--accent); }
 
-/* Mountain Hero */
+/* Hero (Home Only) */
 .hero {
-  position: relative;
-  height: 450px;
-  background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.mountain-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.mountains-svg {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 250px;
-  display: block;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 10;
+  padding: 100px 24px 60px;
   text-align: center;
   animation: fadeInUp 1s ease-out;
 }
 
-.hero-inner h1 { font-size: 42px; margin-bottom: 10px; }
-.hero-inner p { color: var(--muted); }
+.hero h1 { font-size: 42px; margin-bottom: 10px; }
+.hero p { color: var(--muted); }
 
 /* Main Content */
 main {
   max-width: 1000px;
-  margin: -40px auto 60px;
+  margin: 20px auto 100px;
   padding: 0 24px;
   position: relative;
   z-index: 20;
@@ -116,10 +106,12 @@ main {
 
 .card {
   background: var(--card);
+  backdrop-filter: blur(8px);
   padding: 28px 32px;
   border-radius: 14px;
   margin-bottom: 24px;
-  border: 1px solid #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
 .card h1, .card h2 {
@@ -130,7 +122,6 @@ main {
 }
 
 .material-symbols-outlined { color: var(--accent); }
-
 .card p { color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
 
 /* Rules Agreement Area */
@@ -145,16 +136,8 @@ main {
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  user-select: none;
   color: var(--text);
   font-weight: 600;
-}
-
-.checkbox-container input {
-  width: 20px;
-  height: 20px;
-  accent-color: var(--accent);
-  cursor: pointer;
 }
 
 #ipBox {
@@ -167,42 +150,31 @@ main {
   animation: fadeInUp 0.4s ease;
 }
 
-.ip-text {
-  font-family: monospace;
-  color: var(--accent);
-  font-size: 1.1rem;
-}
-
 /* Plugin Toggles */
 .plugin {
-  background: #292929;
+  background: rgba(41, 41, 41, 0.6);
   border-radius: 8px;
   margin-bottom: 10px;
   overflow: hidden;
 }
 
-.plugin-header {
-  padding: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.plugin-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 14px;
-}
-
+.plugin-header { padding: 14px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.plugin-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 14px; }
 .plugin-content.open { padding: 14px; max-height: 200px; }
 
-footer { text-align: center; padding: 24px; color: #666; }
+footer { text-align: center; padding: 24px; color: #666; position: relative; z-index: 10; }
 .hidden { display: none !important; }
 </style>
 </head>
 <body>
+
+<div class="fixed-mountains">
+  <svg class="mountains-svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+    <path fill="#1a1a1a" d="M0,320 L200,160 L400,280 L650,100 L900,240 L1150,140 L1440,320 Z"></path>
+    <path fill="#151515" opacity="0.8" d="M-50,320 L150,200 L350,290 L550,180 L800,280 L1100,160 L1490,320 Z"></path>
+    <path fill="#0f0f0f" d="M0,320 L300,240 L600,300 L900,220 L1200,280 L1440,240 L1440,320 L0,320 Z"></path>
+  </svg>
+</div>
 
 <header>
   <div class="brand">
@@ -217,22 +189,12 @@ footer { text-align: center; padding: 24px; color: #666; }
   </nav>
 </header>
 
-<div id="homeHero" class="hero">
-  <div class="mountain-container">
-    <svg class="mountains-svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
-      <path fill="#1a1a1a" d="M0,320 L200,160 L400,280 L650,100 L900,240 L1150,140 L1440,320 Z"></path>
-      <path fill="#151515" opacity="0.8" d="M-50,320 L150,200 L350,290 L550,180 L800,280 L1100,160 L1490,320 Z"></path>
-      <path fill="#0f0f0f" d="M0,320 L300,240 L600,300 L900,220 L1200,280 L1440,240 L1440,320 L0,320 Z"></path>
-    </svg>
-  </div>
-  <div class="hero-inner">
-    <h1>AlpineSMP Documentation</h1>
-    <p>Official documentation and server rules</p>
-  </div>
-</div>
-
 <main>
   <section id="home" class="page active">
+    <div class="hero">
+        <h1>AlpineSMP Documentation</h1>
+        <p>Official documentation and server rules</p>
+    </div>
     <div class="card">
       <h1><span class="material-symbols-outlined">home</span>Welcome</h1>
       <p>This documentation outlines the rules, expectations, plugins, and systems we use.</p>
@@ -263,10 +225,9 @@ footer { text-align: center; padding: 24px; color: #666; }
           <input type="checkbox" id="agreeCheck" onchange="toggleIP()">
           I have read and agree to the rules
         </label>
-        
         <div id="ipBox">
           <p style="margin-bottom: 5px; color: var(--text);"><strong>Server IP:</strong></p>
-          <p class="ip-text">Java: alpinesmp2.sdlf.fun</p>
+          <p style="font-family: monospace; color: var(--accent);">Java: alpinesmp2.sdlf.fun</p>
         </div>
       </div>
     </div>
@@ -304,15 +265,6 @@ function showPage(id, navEl){
   document.querySelectorAll("nav a").forEach(a=>a.classList.remove("active"));
   navEl.classList.add("active");
 
-  const hero = document.getElementById("homeHero");
-  if (id === "home") {
-    hero.classList.remove("hidden");
-    document.querySelector('main').style.marginTop = "-40px";
-  } else {
-    hero.classList.add("hidden");
-    document.querySelector('main').style.marginTop = "40px";
-  }
-
   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 
@@ -320,8 +272,7 @@ function showPage(id, navEl){
 }
 
 function togglePlugin(header){
-  const content = header.nextElementSibling;
-  content.classList.toggle("open");
+  header.nextElementSibling.classList.toggle("open");
 }
 
 function toggleIP() {
