@@ -132,32 +132,31 @@ main {
 .btn-agree {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   background: linear-gradient(135deg, var(--accent) 0%, #4a912b 100%);
   color: #000;
-  padding: 16px 32px;
-  border-radius: 12px;
+  padding: 16px 36px;
+  border-radius: 14px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.25);
   cursor: pointer;
   transition: var(--transition);
   margin-top: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 0 0 var(--accent-glow);
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-agree .btn-icon {
+  color: #fff; /* White icon to contrast with the green button */
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
 }
 
 .btn-agree:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
-  filter: brightness(1.1);
-}
-
-.btn-agree:active {
-  transform: translateY(-1px);
+  filter: brightness(1.05);
 }
 
 /* Modal Styling */
@@ -186,7 +185,8 @@ main {
   box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
-.close-modal { position: absolute; top: 15px; right: 15px; color: var(--muted); cursor: pointer; }
+.close-modal { position: absolute; top: 15px; right: 15px; color: var(--muted); cursor: pointer; transition: color 0.2s; }
+.close-modal:hover { color: #fff; }
 
 .ip-list { text-align: left; margin-top: 25px; }
 .ip-item { 
@@ -221,9 +221,9 @@ footer { text-align: center; padding: 40px 24px; color: #666; position: relative
 <div class="modal-overlay" id="ipModal">
   <div class="modal-content">
     <span class="material-symbols-outlined close-modal" onclick="closeModal()">close</span>
-    <span class="material-symbols-outlined" style="font-size: 54px; margin-bottom: 15px;">sports_esports</span>
+    <span class="material-symbols-outlined" style="font-size: 54px; margin-bottom: 15px; color: var(--accent);">sports_esports</span>
     <h2>Rules Accepted!</h2>
-    <p style="color: var(--muted); font-size: 0.95rem;">Welcome to the server!</p>
+    <p style="color: var(--muted); font-size: 0.95rem;">Join the server using the details below:</p>
     <div class="ip-list">
       <div class="ip-item"><label>Java Server IP</label><code>alpinesmp.sdlf.fun</code></div>
       <div class="ip-item"><label>Bedrock Server IP</label><code>ns566750.seedloaf.com</code></div>
@@ -261,7 +261,7 @@ footer { text-align: center; padding: 40px 24px; color: #666; position: relative
   <section id="earlygame" class="page">
     <div class="card" style="margin-top: 40px;">
       <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Information</h1>
-      <p><strong>How to Join:</strong> Go to the 'Servers' Tab in Minecraft to add the server using the IPs found in the Rules tab.</p>
+      <p><strong>How to Join:</strong> Go to the 'Servers' Tab in Minecraft to add the server using the details found in the Rules popup.</p>
       <p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts.</p>
       <p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group.</p>
     </div>
@@ -278,7 +278,7 @@ footer { text-align: center; padding: 40px 24px; color: #666; position: relative
       <p>6. You may not kill players who have no armor. If a player removes their armor after engaging, they may be attacked.</p>
       
       <button class="btn-agree" onclick="openModal()">
-        <span class="material-symbols-outlined">check_circle</span>
+        <span class="material-symbols-outlined btn-icon">check_circle</span>
         I AGREE TO THE RULES
       </button>
     </div>
@@ -293,11 +293,11 @@ footer { text-align: center; padding: 40px 24px; color: #666; position: relative
       </div>
       <div class="plugin">
         <div class="plugin-header" onclick="togglePlugin(this)"><span class="material-symbols-outlined">expand_more</span>LuckPerms</div>
-        <div class="plugin-content">The advanced permissions system for ranks.</div>
+        <div class="plugin-content">The advanced permissions system for managing ranks and roles.</div>
       </div>
       <div class="plugin">
         <div class="plugin-header" onclick="togglePlugin(this)"><span class="material-symbols-outlined">expand_more</span>GriefPrevention</div>
-        <div class="plugin-content">Allows you to claim land to protect your builds.</div>
+        <div class="plugin-content">Allows you to claim land with a golden shovel to protect your builds.</div>
       </div>
     </div>
   </section>
