@@ -35,87 +35,56 @@ body {
 /* Persistent Mountain Background */
 .fixed-mountains {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 350px;
-  z-index: -1;
-  pointer-events: none;
+  bottom: 0; left: 0; width: 100%; height: 350px;
+  z-index: -1; pointer-events: none;
 }
 
-.mountains-svg {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
+.mountains-svg { position: absolute; bottom: 0; width: 100%; height: 100%; }
 
 /* Header & Responsive Nav */
 header {
-  position: sticky;
-  top: 0;
+  position: sticky; top: 0;
   background: rgba(15, 15, 15, 0.85);
   backdrop-filter: blur(12px);
-  display: flex;
-  flex-wrap: wrap; /* Allows nav to drop down on mobile */
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: space-between;
+  padding: 12px 36px;
   border-bottom: 1px solid #2a2a2a;
   z-index: 1000;
 }
 
 .brand { display: flex; align-items: center; gap: 12px; }
+.brand img { width: 42px; height: 42px; object-fit: contain; }
+.brand span { font-weight: 600; font-size: 1.25rem; }
 
-/* FIX: Stretched Logo Fix */
-.brand img { 
-  width: 42px; 
-  height: 42px; 
-  object-fit: contain; /* Keeps aspect ratio */
-}
-
-.brand span { font-weight: 600; font-size: 1.2rem; }
-
-nav { display: flex; gap: 4px; }
-
+nav { display: flex; gap: 8px; }
 nav a {
-  padding: 8px 12px;
-  text-decoration: none;
-  color: var(--text);
-  border-radius: 6px;
-  transition: var(--transition);
-  cursor: pointer;
-  font-size: 0.85rem;
+  padding: 10px 18px;
+  text-decoration: none; color: var(--text);
+  border-radius: 6px; transition: var(--transition);
+  cursor: pointer; font-size: 0.9rem;
 }
-
 nav a:hover { background: rgba(93, 181, 54, 0.1); color: var(--accent); }
 nav a.active { background: rgba(93, 181, 54, 0.2); color: var(--accent); }
 
 /* Home Hero Section */
 .hero {
-  padding: 80px 20px 60px;
+  padding: 100px 24px 70px;
   text-align: center;
   animation: fadeInUp 1s ease-out;
 }
-
 .hero h1 {
-  font-size: clamp(32px, 8vw, 56px); /* Responsive font size */
-  margin-bottom: 12px;
-  letter-spacing: -1px;
+  font-size: clamp(38px, 8vw, 64px);
+  margin-bottom: 15px; letter-spacing: -1px;
   text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
-
-.hero p { color: var(--muted); font-size: 1.1rem; letter-spacing: 1px; }
+.hero p { color: var(--muted); font-size: 1.2rem; letter-spacing: 1px; }
 
 /* Main Content */
 main {
-  max-width: 900px;
-  margin: 0 auto 100px;
-  padding: 0 20px;
-  position: relative;
-  z-index: 20;
+  max-width: 950px; margin: 0 auto 100px;
+  padding: 0 24px; position: relative; z-index: 20;
 }
-
 .page { display: none; opacity: 0; }
 .page.active { display: block; animation: fadeInUp 0.5s forwards; }
 
@@ -126,94 +95,71 @@ main {
 
 /* Cards */
 .card {
-  background: var(--card);
-  backdrop-filter: blur(8px);
-  padding: 24px;
-  border-radius: 14px;
-  margin-bottom: 24px;
+  background: var(--card); backdrop-filter: blur(8px);
+  padding: 32px; border-radius: 16px; margin-bottom: 24px;
   border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
+.card h1, .card h2 { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; font-size: 1.7rem; }
+.card p { color: var(--muted); line-height: 1.7; margin-bottom: 16px; font-size: 1.05rem; }
+.card strong { color: #fff; }
 
-.card h1, .card h2 { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 1.5rem; }
-.material-symbols-outlined { color: var(--accent); }
-.card p { color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
-
-/* MODERN AGREE BUTTON */
+/* LARGE MODERN AGREE BUTTON */
 .btn-agree {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 16px;
   background: linear-gradient(135deg, var(--accent) 0%, #4a912b 100%);
   color: #000;
-  padding: 16px 28px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 1px solid rgba(255,255,255,0.25);
-  cursor: pointer;
-  transition: var(--transition);
-  margin-top: 20px;
-  width: 100%; /* Full width on mobile */
-  justify-content: center;
-  max-width: 320px;
+  padding: 18px 42px; /* Restored size */
+  border-radius: 14px;
+  font-weight: 700; font-size: 1rem;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer; transition: var(--transition);
+  margin-top: 25px; width: auto; min-width: 280px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
-
-.btn-agree .btn-icon { color: #fff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.4)); }
-
+.btn-agree .btn-icon { color: #fff; filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); font-size: 24px; }
 .btn-agree:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+  filter: brightness(1.1);
 }
 
 /* Modal Styling */
 .modal-overlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(12px);
-  z-index: 2000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(15px);
+  z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px;
 }
-
 .modal-content {
-  background: #1e1e1e;
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid var(--accent);
-  width: 100%;
-  max-width: 450px;
-  position: relative;
-  text-align: center;
+  background: #1e1e1e; padding: 40px; border-radius: 24px;
+  border: 1px solid var(--accent); width: 100%; max-width: 500px;
+  position: relative; text-align: center; box-shadow: 0 30px 60px rgba(0,0,0,0.7);
 }
+.close-modal { position: absolute; top: 20px; right: 20px; color: var(--muted); cursor: pointer; }
 
-.close-modal { position: absolute; top: 15px; right: 15px; color: var(--muted); cursor: pointer; }
-
-.ip-list { text-align: left; margin-top: 20px; }
+.ip-list { text-align: left; margin-top: 25px; }
 .ip-item { 
-  margin-bottom: 12px; 
-  padding: 12px; 
-  background: rgba(255,255,255,0.03); 
-  border-radius: 10px; 
-  border-left: 4px solid var(--accent); 
+  margin-bottom: 15px; padding: 15px; 
+  background: rgba(255,255,255,0.04); border-radius: 12px; 
+  border-left: 5px solid var(--accent); 
 }
-.ip-item label { display: block; font-size: 0.65rem; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
-.ip-item code { font-family: monospace; font-size: 1rem; color: #fff; word-break: break-all; }
+.ip-item label { display: block; font-size: 0.75rem; color: var(--accent); text-transform: uppercase; font-weight: 800; margin-bottom: 6px; }
+.ip-item code { font-family: monospace; font-size: 1.1rem; color: #fff; word-break: break-all; }
 
-/* Mobile Optimizations */
-@media (max-width: 600px) {
-  header { padding: 12px 16px; justify-content: center; gap: 10px; }
-  nav { width: 100%; justify-content: center; overflow-x: auto; }
-  .hero { padding: 60px 16px 40px; }
-  .card { padding: 20px; }
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  header { padding: 15px 20px; }
+  nav { width: 100%; justify-content: center; margin-top: 10px; order: 3; }
+  .btn-agree { width: 100%; }
+}
+@media (max-width: 480px) {
+  nav a { padding: 8px 10px; font-size: 0.8rem; }
+  .card { padding: 24px; }
 }
 
-footer { text-align: center; padding: 40px 24px; color: #666; font-size: 0.8rem; }
+footer { text-align: center; padding: 50px 24px; color: #555; font-size: 0.9rem; letter-spacing: 1px; }
 </style>
 </head>
 <body>
@@ -229,9 +175,9 @@ footer { text-align: center; padding: 40px 24px; color: #666; font-size: 0.8rem;
 <div class="modal-overlay" id="ipModal">
   <div class="modal-content">
     <span class="material-symbols-outlined close-modal" onclick="closeModal()">close</span>
-    <span class="material-symbols-outlined" style="font-size: 48px; margin-bottom: 15px; color: var(--accent);">sports_esports</span>
-    <h2>Rules Accepted!</h2>
-    <p style="color: var(--muted); font-size: 0.9rem;">Join the server using the details below:</p>
+    <span class="material-symbols-outlined" style="font-size: 60px; margin-bottom: 20px; color: var(--accent);">sports_esports</span>
+    <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Rules Accepted!</h2>
+    <p style="color: var(--muted); font-size: 1rem;">Welcome to Alpine SMP. Use these details to join:</p>
     <div class="ip-list">
       <div class="ip-item"><label>Java Server IP</label><code>alpinesmp.sdlf.fun</code></div>
       <div class="ip-item"><label>Bedrock Server IP</label><code>ns566750.seedloaf.com</code></div>
@@ -247,9 +193,8 @@ footer { text-align: center; padding: 40px 24px; color: #666; font-size: 0.8rem;
   </div>
   <nav>
     <a class="active" onclick="showPage('home', this)">Home</a>
-    <a onclick="showPage('earlygame', this)">Early Game</a>
+    <a onclick="showPage('earlygame', this)">Early Game Info</a>
     <a onclick="showPage('rules', this)">Rules</a>
-    <a onclick="showPage('plugins', this)">Plugins</a>
   </nav>
 </header>
 
@@ -257,42 +202,43 @@ footer { text-align: center; padding: 40px 24px; color: #666; font-size: 0.8rem;
   <section id="home" class="page active">
     <div class="hero">
         <h1>Alpine SMP Handbook</h1>
-        <p>Official Server Documentation</p>
+        <p>Public Access Document</p>
     </div>
     <div class="card">
-      <h1><span class="material-symbols-outlined">home</span>Welcome</h1>
-      <p>This handbook outlines the rules and systems for Alpine SMP. By playing, you agree to follow everything listed here.</p>
+      <h1><span class="material-symbols-outlined">home</span>Welcome to Alpine SMP!</h1>
+      <p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone[cite: 6, 43].</p>
+      <p>By playing on Alpine SMP, you agree to follow everything listed below[cite: 7, 44]. <strong>Failure to read this handbook is not an excuse for breaking rules</strong>[cite: 8, 45].</p>
     </div>
   </section>
 
   <section id="earlygame" class="page">
     <div class="card" style="margin-top: 40px;">
-      <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Info</h1>
-      <p><strong>Join:</strong> Use the 'Servers' Tab in Minecraft. IPs are available in the Rules tab.</p>
-      <p><strong>Alt Accounts:</strong> No alt accounts allowed for hearts.</p>
-      <p><strong>Support:</strong> Contact us via our WhatsApp Group.</p>
+      <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Information</h1>
+      <p>Please read the Early Game Information tab to learn more about our schedules, and more[cite: 26].</p>
+      <p><strong>How to Join:</strong> To join the server simply go to the 'Servers' Tab in Minecraft[cite: 27, 28].</p>
+      <p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts[cite: 32].</p>
+      <p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group[cite: 33, 34].</p>
     </div>
   </section>
 
   <section id="rules" class="page">
     <div class="card" style="margin-top: 40px;">
       <h2><span class="material-symbols-outlined">gavel</span>Server Rules</h2>
-      <p>1. No griefing builds. Stealing is allowed.</p>
-      <p>2. Respect all players. No hate speech.</p>
-      <p>3. No cheating or exploits.</p>
-      <p>4. Do not kill players without armor.</p>
+      <p><strong>1.</strong> No griefing bases or builds. Stealing from other players is allowed[cite: 13].</p>
+      <p><strong>2.</strong> All players must follow new rules and respect grace periods[cite: 14].</p>
+      <p><strong>3.</strong> Respect all players. Harassment, hate speech, and bullying are not allowed[cite: 15].</p>
+      <p><strong>4.</strong> No cheating or exploiting bugs[cite: 16].</p>
+      <p><strong>5.</strong> Do not take advantage of Bedrock players[cite: 17].</p>
+      <p><strong>6.</strong> You may not kill players who have no armor[cite: 18]. If a player removes their armor after engaging, they may be attacked[cite: 19].</p>
       
-      <button class="btn-agree" onclick="openModal()">
-        <span class="material-symbols-outlined btn-icon">check_circle</span>
-        AGREE TO RULES
-      </button>
-    </div>
-  </section>
-
-  <section id="plugins" class="page">
-    <div class="card" style="margin-top: 40px;">
-      <h2><span class="material-symbols-outlined">extension</span>Plugins</h2>
-      <p>We use EssentialsX, LuckPerms, and GriefPrevention to keep things smooth.</p>
+      <p style="margin-top: 20px;"><strong>Breaking rules may end in disciplinary action</strong>[cite: 20].</p>
+      
+      <div style="text-align: center; width: 100%;">
+        <button class="btn-agree" onclick="openModal()">
+          <span class="material-symbols-outlined btn-icon">verified_user</span>
+          I AGREE TO THE RULES
+        </button>
+      </div>
     </div>
   </section>
 </main>
