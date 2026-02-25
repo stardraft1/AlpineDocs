@@ -104,13 +104,20 @@ main {
 .card p { color: var(--muted); line-height: 1.7; margin-bottom: 16px; font-size: 1.05rem; }
 .card strong { color: #fff; }
 
+/* Plugins Accordion */
+.plugin-item { background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; }
+.plugin-header { padding: 18px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: 0.3s; }
+.plugin-header:hover { background: rgba(93, 181, 54, 0.05); }
+.plugin-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 18px; color: var(--muted); font-size: 0.95rem; }
+.plugin-content.open { max-height: 200px; padding: 0 18px 18px; }
+
 /* LARGE MODERN AGREE BUTTON */
 .btn-agree {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 16px;
   background: linear-gradient(135deg, var(--accent) 0%, #4a912b 100%);
   color: #000;
-  padding: 18px 42px; /* Restored size */
+  padding: 18px 42px;
   border-radius: 14px;
   font-weight: 700; font-size: 1rem;
   text-transform: uppercase; letter-spacing: 1.5px;
@@ -154,10 +161,6 @@ main {
   nav { width: 100%; justify-content: center; margin-top: 10px; order: 3; }
   .btn-agree { width: 100%; }
 }
-@media (max-width: 480px) {
-  nav a { padding: 8px 10px; font-size: 0.8rem; }
-  .card { padding: 24px; }
-}
 
 footer { text-align: center; padding: 50px 24px; color: #555; font-size: 0.9rem; letter-spacing: 1px; }
 </style>
@@ -195,6 +198,7 @@ footer { text-align: center; padding: 50px 24px; color: #555; font-size: 0.9rem;
     <a class="active" onclick="showPage('home', this)">Home</a>
     <a onclick="showPage('earlygame', this)">Early Game Info</a>
     <a onclick="showPage('rules', this)">Rules</a>
+    <a onclick="showPage('plugins', this)">Plugins</a>
   </nav>
 </header>
 
@@ -206,38 +210,61 @@ footer { text-align: center; padding: 50px 24px; color: #555; font-size: 0.9rem;
     </div>
     <div class="card">
       <h1><span class="material-symbols-outlined">home</span>Welcome to Alpine SMP!</h1>
-      [span_5](start_span)[span_6](start_span)<p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone[span_5](end_span)[span_6](end_span).</p>
-      [span_7](start_span)[span_8](start_span)<p>By playing on Alpine SMP, you agree to follow everything listed below[span_7](end_span)[span_8](end_span). [span_9](start_span)[span_10](start_span)<strong>Failure to read this handbook is not an excuse for breaking rules</strong>[span_9](end_span)[span_10](end_span).</p>
+      [span_4](start_span)<p>This handbook outlines the rules, expectations, and systems that keep the server fair, organized, and enjoyable for everyone[span_4](end_span).</p>
+      [span_5](start_span)<p>By playing on Alpine SMP, you agree to follow everything listed below[span_5](end_span). [span_6](start_span)<strong>Failure to read this handbook is not an excuse for breaking rules</strong>[span_6](end_span).</p>
     </div>
   </section>
 
   <section id="earlygame" class="page">
     <div class="card" style="margin-top: 40px;">
       <h1><span class="material-symbols-outlined">rocket_launch</span>Early Game Information</h1>
-      [span_11](start_span)<p>Please read the Early Game Information tab to learn more about our schedules, and more[span_11](end_span).</p>
-      [span_12](start_span)<p><strong>How to Join:</strong> To join the server simply go to the 'Servers' Tab in Minecraft[span_12](end_span).</p>
-      [span_13](start_span)<p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts[span_13](end_span).</p>
-      [span_14](start_span)<p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group[span_14](end_span).</p>
+      [span_7](start_span)<p>Please read the Early Game Information tab to learn more about our schedules, and more[span_7](end_span).</p>
+      [span_8](start_span)<p><strong>How to Join:</strong> To join the server simply go to the 'Servers' Tab in Minecraft[span_8](end_span).</p>
+      [span_9](start_span)<p><strong>Alt Accounts:</strong> It is strictly prohibited to use alt accounts to get more hearts[span_9](end_span).</p>
+      [span_10](start_span)<p><strong>Support:</strong> If you need support, you can reach out through our WhatsApp Group[span_10](end_span).</p>
     </div>
   </section>
 
   <section id="rules" class="page">
     <div class="card" style="margin-top: 40px;">
       <h2><span class="material-symbols-outlined">gavel</span>Server Rules</h2>
-      <p><strong>1.</strong> No griefing bases or builds. [span_15](start_span)Stealing from other players is allowed[span_15](end_span).</p>
-      [span_16](start_span)<p><strong>2.</strong> All players must follow new rules and respect grace periods[span_16](end_span).</p>
-      <p><strong>3.</strong> Respect all players. [span_17](start_span)Harassment, hate speech, and bullying are not allowed[span_17](end_span).</p>
-      [span_18](start_span)<p><strong>4.</strong> No cheating or exploiting bugs[span_18](end_span).</p>
-      [span_19](start_span)<p><strong>5.</strong> Do not take advantage of Bedrock players[span_19](end_span).</p>
-      [span_20](start_span)<p><strong>6.</strong> You may not kill players who have no armor[span_20](end_span). [span_21](start_span)If a player removes their armor after engaging, they may be attacked[span_21](end_span).</p>
+      <p><strong>1.</strong> No griefing bases or builds. [span_11](start_span)Stealing from other players is allowed[span_11](end_span).</p>
+      [span_12](start_span)<p><strong>2.</strong> All players must follow new rules and respect grace periods[span_12](end_span).</p>
+      <p><strong>3.</strong> Respect all players. [span_13](start_span)Harassment, hate speech, and bullying are not allowed[span_13](end_span).</p>
+      [span_14](start_span)<p><strong>4.</strong> No cheating or exploiting bugs[span_14](end_span).</p>
+      [span_15](start_span)<p><strong>5.</strong> Do not take advantage of Bedrock players[span_15](end_span).</p>
+      <p><strong>6.</strong> You may not kill players who have no armor. [span_16](start_span)If a player removes their armor after engaging, they may be attacked[span_16](end_span).</p>
       
-      [span_22](start_span)<p style="margin-top: 20px;"><strong>Breaking rules may end in disciplinary action</strong>[span_22](end_span).</p>
+      [span_17](start_span)<p style="margin-top: 20px;"><strong>Breaking rules may end in disciplinary action</strong>[span_17](end_span).</p>
       
       <div style="text-align: center; width: 100%;">
         <button class="btn-agree" onclick="openModal()">
           <span class="material-symbols-outlined btn-icon">verified_user</span>
           I AGREE TO THE RULES
         </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="plugins" class="page">
+    <div class="card" style="margin-top: 40px;">
+      <h2><span class="material-symbols-outlined">extension</span>Server Plug-ins</h2>
+      [span_18](start_span)<p>We use several plugins to enhance the gameplay experience[span_18](end_span). Below are the key systems you'll find on the server:</p>
+      
+      <div class="plugin-item">
+        <div class="plugin-header" onclick="togglePlugin(this)">
+          <span class="material-symbols-outlined">expand_more</span>
+          <strong>Essential Commands</strong>
+        </div>
+        <div class="plugin-content">Includes common server commands for teleportation, homes, and utility tools.</div>
+      </div>
+      
+      <div class="plugin-item">
+        <div class="plugin-header" onclick="togglePlugin(this)">
+          <span class="material-symbols-outlined">expand_more</span>
+          <strong>Grief Protection</strong>
+        </div>
+        <div class="plugin-content">Systems to help players protect their builds, though stealing is permitted per server rules.</div>
       </div>
     </div>
   </section>
@@ -252,6 +279,13 @@ function showPage(id, navEl){
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.getElementById(id).classList.add("active");
   window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function togglePlugin(header) {
+  const content = header.nextElementSibling;
+  const icon = header.querySelector('.material-symbols-outlined');
+  content.classList.toggle('open');
+  icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
 }
 
 function openModal() {
